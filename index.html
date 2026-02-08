@@ -2,7 +2,8 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <!-- ✅ PATCH: viewport-fit per safe-area (notch) -->
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
   <title>Gare E2K • Brand + Multibrand</title>
 
   <style>
@@ -41,9 +42,20 @@
         radial-gradient(1200px 700px at 10% -10%, rgba(214,0,107,.14), transparent 55%),
         radial-gradient(1100px 700px at 90% 0%, rgba(5,168,176,.14), transparent 55%),
         linear-gradient(180deg, #eef2ff, #f7f7fb 35%, #ffffff);
+      -webkit-text-size-adjust: 100%;
+      overscroll-behavior-y: contain;
     }
 
-    .shell{ max-width:1180px; margin:0 auto; padding:22px 16px 46px; }
+    /* ✅ PATCH: safe-area */
+    .shell{
+      max-width:1180px;
+      margin:0 auto;
+      padding:
+        calc(22px + env(safe-area-inset-top))
+        calc(16px + env(safe-area-inset-right))
+        calc(46px + env(safe-area-inset-bottom))
+        calc(16px + env(safe-area-inset-left));
+    }
 
     .header{
       display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
@@ -73,6 +85,8 @@
       box-shadow: var(--shadowSoft);
       user-select:none;
       white-space:nowrap;
+      touch-action: manipulation; /* ✅ PATCH: tap più reattivo mobile */
+      -webkit-tap-highlight-color: transparent;
     }
     .btn.primary{
       border-color: rgba(214,0,107,.30);
@@ -110,7 +124,6 @@
       padding:12px 14px;
       overflow:hidden;
       position:relative;
-      /* min-height rimosso per far crescere la card con testo completo */
     }
     .bCard .bTop{
       display:flex; align-items:center; justify-content:space-between; gap:10px;
@@ -127,15 +140,14 @@
       font-size:22px;
       line-height:1;
     }
-    /* ✅ FIX: testo completo (no ellipsis) */
     .bCard .bSub{
       font-size:11px;
       color:var(--muted);
       font-weight:850;
       line-height:1.25;
-      white-space: normal;        /* <-- wrap */
-      overflow: visible;          /* <-- no clip */
-      text-overflow: unset;       /* <-- no ellipsis */
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
       word-break: break-word;
       margin-top:2px;
     }
@@ -148,7 +160,6 @@
       pointer-events:none;
     }
 
-    /* ===== NEW: box suggerimenti multibrand in dashboard ===== */
     .insights{
       background: var(--card);
       border: 1px solid var(--border);
@@ -192,6 +203,8 @@
       cursor:pointer;
       overflow:hidden;
       text-align:left;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .tile:hover{ transform: translateY(-1px); transition:.15s; }
     .tile h3{ margin:0; font-size:26px; font-weight:950; letter-spacing:-.2px; }
@@ -218,6 +231,19 @@
       background: linear-gradient(180deg, rgba(15,23,42,.03), rgba(15,23,42,0));
       flex-wrap:wrap;
     }
+
+    /* ✅ PATCH: header sticky su mobile per non “perdere” Acea/azioni */
+    @media(max-width:640px){
+      .panelHd{
+        position: sticky;
+        top: calc(env(safe-area-inset-top));
+        z-index: 50;
+        background: rgba(255,255,255,.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+    }
+
     .panelHd .left{ display:flex; align-items:center; gap:12px; }
     .dot{
       width:12px; height:12px; border-radius:999px;
@@ -269,6 +295,8 @@
       font-weight:950;
       font-size:12px;
       user-select:none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .subbtn.active{
       border-color: rgba(15,23,42,.28);
@@ -332,7 +360,11 @@
       .brandTotals{ grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
     @media(max-width:640px){
-      .shell{ padding:16px 12px 42px; }
+      .shell{ padding:
+        calc(16px + env(safe-area-inset-top))
+        calc(12px + env(safe-area-inset-right))
+        calc(42px + env(safe-area-inset-bottom))
+        calc(12px + env(safe-area-inset-left)); }
       .title{ font-size:34px; }
       .pill{ width:200px; height:22px; }
       .header{ flex-direction:column; align-items:flex-start; }
@@ -435,7 +467,6 @@
 
     <div id="errBanner" class="errBanner"></div>
 
-    <!-- ✅ NEW: Suggerimenti Multibrand in dashboard -->
     <div class="insights" id="dashInsights">
       <div class="insTitle">Suggerimenti Multibrand</div>
       <div class="insLine" id="ins3">✅ Per arrivare a 3 brand: -</div>
@@ -488,10 +519,9 @@
       </button>
     </div>
 
-    <!-- PANNELLI (immutati rispetto alla tua versione precedente) -->
     <div id="panelWrap" class="panelWrap">
-      <!-- (TUTTI I PANNELLI restano uguali: li lascio identici per non toccare logiche/UI) -->
       <!-- ====== INIZIO PANNELLI ====== -->
+
       <!-- ACEA -->
       <div class="panel hide" data-panel="acea">
         <div class="panelHd">
@@ -1039,6 +1069,16 @@
     el.textContent = msg;
   };
 
+  /* ✅ PATCH: render fluido (debounce su rAF) */
+  let _raf = 0;
+  function scheduleRender(){
+    if(_raf) cancelAnimationFrame(_raf);
+    _raf = requestAnimationFrame(()=>{
+      _raf = 0;
+      renderAll();
+    });
+  }
+
   // ===== Helpers soglie =====
   function nextStep(qty, steps){
     const q = Number(qty||0);
@@ -1052,7 +1092,6 @@
     if(!ns.hasNext) return `Max tier`;
     return `Prossima ${label}: ${ns.next} (mancano ${ns.missing})`;
   }
-  // ===== NEW: token helper fuori da calcMultibrand (serve per dashboard box) =====
   function tokenForBrandCount(brandsCount, rowObj){
     if(!rowObj) return 0;
     if(brandsCount>=4) return rowObj.b4;
@@ -1282,7 +1321,7 @@
     return "base";
   };
 
-  /* ===== Calculations ===== */
+  /* ===== Calculations (immutate) ===== */
   function calcAcea(){
     const Q = {
       flex: clamp0(qs('#acea_flex').value),
@@ -1321,7 +1360,7 @@
 
   function calcFwMobile(){
     const mode = qs('#fw_mobile_mode').value;
-    const tier = qs('#fw_mobile_tier').value; // manuale
+    const tier = qs('#fw_mobile_tier').value;
     const exMnp = (qs('#fw_m_ex_mnp').value === "1");
     const exE2  = (qs('#fw_m_ex_energy2').value === "1");
     const exProt= (qs('#fw_m_ex_protect').value === "1");
@@ -1613,34 +1652,15 @@
     const extraSkyEnergy = (brands>=4 && skyContractsForRule>=10 && energyContracts>=50) ? CFG.mb.extraSkyEnergy : 0;
 
     const missingBrands = [];
-    if(!fwActive) missingBrands.push({
-      key:"fastweb",
-      name:"Fastweb",
-      rule:"Per attivare Fastweb in Multibrand: ≥1 Mobile + ≥1 Wireline + ≥1 Energy",
-    });
-    if(!skyActive) missingBrands.push({
-      key:"sky",
-      name:"Sky",
-      rule:"Per attivare Sky in Multibrand: ≥1 contratto Sky (non prova)",
-    });
-    if(!aceaActive) missingBrands.push({
-      key:"acea",
-      name:"Acea",
-      rule:"Per attivare Acea in Multibrand: ≥1 contratto Acea",
-    });
-    if(!hoActive) missingBrands.push({
-      key:"ho",
-      name:"HO Mobile",
-      rule:"Per attivare HO in Multibrand: ≥1 SIM HO (virtuale)",
-    });
+    if(!fwActive) missingBrands.push({ name:"Fastweb", rule:"Per attivare Fastweb in Multibrand: ≥1 Mobile + ≥1 Wireline + ≥1 Energy" });
+    if(!skyActive) missingBrands.push({ name:"Sky", rule:"Per attivare Sky in Multibrand: ≥1 contratto Sky (non prova)" });
+    if(!aceaActive) missingBrands.push({ name:"Acea", rule:"Per attivare Acea in Multibrand: ≥1 contratto Acea" });
+    if(!hoActive) missingBrands.push({ name:"HO Mobile", rule:"Per attivare HO in Multibrand: ≥1 SIM HO (virtuale)" });
 
     const tokenNow = tokenForBrandCount(brands, row);
     const tokenNextPts = tokenForBrandCount(brands, nextRow);
 
-    const tokenIfBrandsUp = missingBrands.map(m => ({
-      name: m.name,
-      rule: m.rule,
-    }));
+    const tokenIfBrandsUp = missingBrands.map(m => ({ name:m.name, rule:m.rule }));
 
     return {
       pts: round2(pts),
@@ -1650,20 +1670,12 @@
       tokenNow, tokenNextPts,
       tokenIfBrandsUp,
       extra, extraSkyEnergy,
-      bonus: extra + extraSkyEnergy,
-      breakdownPts:{
-        fw:{ mobile:pts_fw_mobile, fisso:pts_fw_fisso, energy:pts_fw_energy },
-        sky:{ contract:pts_sky_contract, prova:pts_sky_prova },
-        acea:pts_acea,
-        ho:pts_ho,
-        tiscali:{ mobile:pts_tis_mobile, fres:pts_tis_fres, fbus:pts_tis_fbus },
-        effrent:{ lead:pts_eff_lead, eff:pts_eff_c, rent:pts_rent_c }
-      }
+      bonus: extra + extraSkyEnergy
     };
   }
 
   /* =========================
-     Render
+     Render (immutato nei contenuti, ma chiamato via scheduler)
   ========================= */
   function renderAll(){
     const acea = calcAcea();
@@ -1694,14 +1706,11 @@
     qs('#kpiMB').textContent = eur(mb.bonus);
     qs('#kpiGrand').textContent = eur(grand);
 
-    // ===== Totali per brand + "mancanti" =====
     qs('#totAcea').textContent = eur(acea.eur);
-    qs('#subAcea').textContent =
-      `Contratti: ${acea.contracts} • Tier: ${acea.tier} • ${fmtNextStep(acea.contracts, [1,5,15,30,55], 'soglia')}`;
+    qs('#subAcea').textContent = `Contratti: ${acea.contracts} • Tier: ${acea.tier} • ${fmtNextStep(acea.contracts, [1,5,15,30,55], 'soglia')}`;
 
     qs('#totSky').textContent = eur(sky.eur);
-    qs('#subSky').textContent =
-      `Punti: ${sky.pts} • Tier: ${sky.tier} • ${fmtNextStep(sky.pts, [5,8,12,20], 'punti')}`;
+    qs('#subSky').textContent = `Punti: ${sky.pts} • Tier: ${sky.tier} • ${fmtNextStep(sky.pts, [5,8,12,20], 'punti')}`;
 
     qs('#totFastweb').textContent = eur(fastwebTotal);
     qs('#subFastweb').textContent = `Energy ${eur(fwEnergy.eur)} • Telco ${eur(fwTelcoTotal)}`;
@@ -1713,29 +1722,20 @@
     qs('#subFastweb2').textContent = `${fwEnergyNextTxt} • ${fwWireNextTxt}`;
 
     qs('#totHo').textContent = eur(ho.eur);
-    qs('#subHo').textContent =
-      `SIM: ${ho.sims} • Tier: ${ho.tier} • ${fmtNextStep(ho.sims, [5,10,20], 'SIM')}`;
+    qs('#subHo').textContent = `SIM: ${ho.sims} • Tier: ${ho.tier} • ${fmtNextStep(ho.sims, [5,10,20], 'SIM')}`;
 
     qs('#totTiscali').textContent = eur(tiscali.eur);
-    qs('#subTiscali').textContent =
-      `Mob tot: ${tiscali.totMobile} • Tier: ${tiscali.mtier} • ${fmtNextStep(tiscali.totMobile, [5,10,18,30], 'mob')}`;
-    qs('#subTiscali2').textContent =
-      `Fissi (tier base): ${tiscali.totFixedTierBase} • Tier: ${tiscali.ftier} • ${fmtNextStep(tiscali.totFixedTierBase, [3,5], 'fissi')}`;
+    qs('#subTiscali').textContent = `Mob tot: ${tiscali.totMobile} • Tier: ${tiscali.mtier} • ${fmtNextStep(tiscali.totMobile, [5,10,18,30], 'mob')}`;
+    qs('#subTiscali2').textContent = `Fissi (tier base): ${tiscali.totFixedTierBase} • Tier: ${tiscali.ftier} • ${fmtNextStep(tiscali.totFixedTierBase, [3,5], 'fissi')}`;
 
-    // ===== NEW: dashboard suggestions box =====
     const token3 = tokenForBrandCount(3, mb.row);
     const token4 = tokenForBrandCount(4, mb.row);
 
-    function brandCost(name){
-      // Fastweb è più “costoso” perché richiede 3 condizioni (Mobile+Wireline+Energy)
-      return (name==="Fastweb") ? 3 : 1;
-    }
-
+    function brandCost(name){ return (name==="Fastweb") ? 3 : 1; }
     function pickForTarget(target){
       if(mb.brands >= target) return { already:true, list:[] };
       const need = target - mb.brands;
       const candidates = (mb.tokenIfBrandsUp || []).map(x => ({ name:x.name, rule:x.rule, cost: brandCost(x.name) }));
-      // preferisco i brand più semplici (cost min). A parità, ordine alfabetico.
       candidates.sort((a,b)=> (a.cost-b.cost) || a.name.localeCompare(b.name));
       return { already:false, list: candidates.slice(0, need) };
     }
@@ -1743,29 +1743,24 @@
     const to3 = pickForTarget(3);
     const to4 = pickForTarget(4);
 
-    const line3 = to3.already
+    qs('#ins3').textContent = to3.already
       ? `✅ Per arrivare a 3 brand: già OK → gettone = ${eur(tokenForBrandCount(3, mb.row))}`
       : `✅ Per arrivare a 3 brand: attiva ${to3.list.map(x=>x.name).join(" + ")} → gettone = ${eur(token3)}`;
 
-    const line4 = to4.already
+    qs('#ins4').textContent = to4.already
       ? `✅ Per arrivare a 4 brand: già OK → gettone = ${eur(tokenForBrandCount(4, mb.row))}`
       : `✅ Per arrivare a 4 brand: attiva ${to4.list.map(x=>x.name).join(" + ")} → gettone = ${eur(token4)}`;
 
-    const linePts = mb.nextRow
+    qs('#insPts').textContent = mb.nextRow
       ? `🎯 Per prossimo scaglione punti: mancano ${mb.missingPtsToNext} punti → gettone (brand attuali) = ${eur(mb.tokenNextPts)}`
       : `🎯 Per prossimo scaglione punti: sei già al massimo → gettone (brand attuali) = ${eur(mb.tokenNow)}`;
 
-    qs('#ins3').textContent = line3;
-    qs('#ins4').textContent = line4;
-    qs('#insPts').textContent = linePts;
-
-    // nota “qualità” (se non in soglia MB)
     const noteTxt = (mb.pts < 10 || mb.brands < 2)
       ? `Nota: per attivare il gettone MB serve almeno 10 punti e almeno 2 brand attivi (ora: ${mb.pts} pt / ${mb.brands} brand).`
       : `Nota: gettone attuale (brand=${mb.brands}) = ${eur(mb.tokenNow)} • Bonus MB totale = ${eur(mb.bonus)}.`;
     qs('#insNote').innerHTML = `<span>${noteTxt}</span>`;
 
-    // ===== Panel outputs (brand) =====
+    // Outputs pannelli
     qs('#acea_eur').textContent = eur(acea.eur);
     qs('#acea_meta').textContent =
       `Contratti: ${acea.contracts} • Tier: ${acea.tier} • ${fmtNextStep(acea.contracts, [1,5,15,30,55], 'soglia')} • Boll.: ${acea.boll ? 'SÌ' : 'NO'}`;
@@ -1864,7 +1859,6 @@ Efficiency contratti: ${effrent.effC}
 Rent contratti: ${effrent.rentC}
 €: 0 (solo punti MB)`;
 
-    // ===== Multibrand panel (lasciato invariato: aggiorna solo contenuti) =====
     qs('#mb_eur').textContent = eur(mb.bonus);
     qs('#mb_meta').textContent = `Punti: ${mb.pts} • Brand attivi: ${mb.brands}`;
 
@@ -1905,11 +1899,11 @@ Condizione Extra SKY+ENERGY:
 - 4 brand attivi: ${(mb.brands>=4?'SI':'NO')}
 - Sky ≥ 10: ${(mb.skyContractsForRule>=10?'SI':'NO')} (attuali: ${mb.skyContractsForRule})
 - Energia ≥ 50: ${(mb.energyContracts>=50?'SI':'NO')} (attuali: ${mb.energyContracts})
-- Extra Sky+Energy: ${eur(mb.extraSkyEnergy)}
+- Extra Sky+Energy: ${eur((mb.brands>=4 && mb.skyContractsForRule>=10 && mb.energyContracts>=50) ? CFG.mb.extraSkyEnergy : 0)}
 
 Bonus Totale Multibrand:
 - Gettone MB: ${eur(mb.extra)}
-- Extra Sky+Energy: ${eur(mb.extraSkyEnergy)}
+- Extra Sky+Energy: ${eur((mb.brands>=4 && mb.skyContractsForRule>=10 && mb.energyContracts>=50) ? CFG.mb.extraSkyEnergy : 0)}
 = Tot MB: ${eur(mb.bonus)}`;
 
     qs('#global_detail').textContent =
@@ -1935,37 +1929,57 @@ TOTALI COMPLESSIVI:
      UI
   ========================= */
   function openPanel(key){
-    qs('#dashboard').style.display = 'none';
-    qs('#panelWrap').style.display = 'block';
+    const dash = qs('#dashboard');
+    const wrap = qs('#panelWrap');
+
+    dash.style.display = 'none';
+    wrap.style.display = 'block';
+
     qsa('[data-panel]').forEach(p=> p.classList.add('hide'));
     const panel = qs(`[data-panel="${key}"]`);
     if(panel) panel.classList.remove('hide');
-    renderAll();
-    window.scrollTo({top:0, behavior:'smooth'});
+
+    /* ✅ PATCH: scroll affidabile su mobile dopo repaint */
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        // porta in vista l’inizio del form (evita “Acea invisibile”)
+        const firstField = panel ? panel.querySelector('.panelBd') : null;
+        if(firstField){
+          firstField.scrollIntoView({behavior:'smooth', block:'start'});
+        }else{
+          window.scrollTo({top:0, behavior:'smooth'});
+        }
+      });
+    });
+
+    scheduleRender();
   }
+
   function backToDashboard(){
     qs('#panelWrap').style.display = 'none';
     qs('#dashboard').style.display = 'grid';
-    renderAll();
-    window.scrollTo({top:0, behavior:'smooth'});
+    requestAnimationFrame(()=> window.scrollTo({top:0, behavior:'smooth'}));
+    scheduleRender();
   }
 
   function setFwTab(name){
     qsa('[data-fwtab]').forEach(b=> b.classList.toggle('active', b.dataset.fwtab===name));
     qs('#fwTab_mobile').classList.toggle('hide', name!=='mobile');
     qs('#fwTab_wireline').classList.toggle('hide', name!=='wireline');
+    scheduleRender();
   }
   function setTisTab(name){
     qsa('[data-tistab]').forEach(b=> b.classList.toggle('active', b.dataset.tistab===name));
     qs('#tisTab_tiscali').classList.toggle('hide', name!=='tiscali');
     qs('#tisTab_effrent').classList.toggle('hide', name!=='effrent');
+    scheduleRender();
   }
 
   function refreshWirelineUI(){
     const seg = qs('#fw_w_segment').value;
     qs('#wireline_res').classList.toggle('hide', seg!=='res');
     qs('#wireline_bus').classList.toggle('hide', seg!=='bus');
-    renderAll();
+    scheduleRender();
   }
 
   function adaptMobileMode(){
@@ -1987,15 +2001,15 @@ TOTALI COMPLESSIVI:
       inp995.disabled = false;
       qs('#fw_m_ex_mnp').disabled = false;
     }
-    renderAll();
+    scheduleRender();
   }
 
   function bind(){
     qsa('[data-open]').forEach(t=> t.addEventListener('click', ()=> openPanel(t.dataset.open)));
     qsa('[data-back]').forEach(b=> b.addEventListener('click', backToDashboard));
 
-    qs('#btnCalcAll').addEventListener('click', renderAll);
-    qsa('[data-calc]').forEach(b=> b.addEventListener('click', renderAll));
+    qs('#btnCalcAll').addEventListener('click', ()=> renderAll());
+    qsa('[data-calc]').forEach(b=> b.addEventListener('click', ()=> renderAll()));
 
     qs('#btnReset').addEventListener('click', ()=>{
       qsa('input[type="number"]').forEach(i=> i.value = 0);
@@ -2022,9 +2036,10 @@ TOTALI COMPLESSIVI:
       renderAll();
     });
 
+    /* ✅ PATCH: su mobile usa scheduler (non renderAll immediato su ogni tasto) */
     qsa('input,select').forEach(el=>{
-      el.addEventListener('input', renderAll);
-      el.addEventListener('change', renderAll);
+      el.addEventListener('input', scheduleRender, {passive:true});
+      el.addEventListener('change', scheduleRender, {passive:true});
     });
 
     qsa('[data-fwtab]').forEach(b=> b.addEventListener('click', ()=> setFwTab(b.dataset.fwtab)));
