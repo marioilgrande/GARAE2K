@@ -206,15 +206,31 @@
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
     }
-    .tile:hover{ transform: translateY(-1px); transition:.15s; }
-    .tile h3{ margin:0; font-size:26px; font-weight:950; letter-spacing:-.2px; }
-    .tile p{ margin:8px 0 0; color:var(--muted); font-weight:850; line-height:1.25; font-size:18px; }
-    .accent{
-      position:absolute; right:-40px; top:8px;
-      width:180px; height:180px; border-radius:50%;
-      opacity:.16;
-      pointer-events:none;
-    }
+/* ===== Hover/Touch FIX iOS: evita hover “sticky” che fa accavallare le card ===== */
+.tile{
+  transition: transform .15s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Multibrand: 2 colonne solo su desktop, 1 colonna su mobile */
+.tile[data-open="multibrand"]{ grid-column: span 2 !important; }
+
+@media(max-width:980px){
+  .tile[data-open="multibrand"]{ grid-column: auto !important; }
+}
+
+/* Applica l'effetto hover SOLO su device con mouse/touchpad */
+@media (hover:hover) and (pointer:fine){
+  .tile:hover{ transform: translateY(-1px); }
+}
+
+/* Su touch (iPhone/Android) niente hover persistente */
+@media (hover:none) and (pointer:coarse){
+  .tile:hover{ transform:none; }
+  .tile:active{ transform: translateY(-1px); } /* feedback solo mentre premi */
+}
+
 
     .panelWrap{ display:none; margin-top:18px; }
     .panel{
