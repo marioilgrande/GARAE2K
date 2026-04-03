@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
-  <title>Gare E2K • Marzo 2026</title>
+  <title>Gare E2K • Aprile 2026</title>
 
   <style>
     :root{
@@ -65,7 +65,8 @@
     }
 
     .topActions{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; margin-top:2px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+      margin-top:2px;
     }
     .btn{
       cursor:pointer;
@@ -119,12 +120,8 @@
     .bCard .bTop{
       display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;
     }
-    .bCard .bName{
-      font-weight:950; font-size:13px; color:var(--muted); letter-spacing:.2px;
-    }
-    .bCard .bVal{
-      font-weight:950; font-size:22px; line-height:1;
-    }
+    .bCard .bName{ font-weight:950; font-size:13px; color:var(--muted); letter-spacing:.2px; }
+    .bCard .bVal{ font-weight:950; font-size:22px; line-height:1; }
     .bCard .bSub{
       font-size:11px; color:var(--muted); font-weight:850; line-height:1.25;
       white-space:normal; overflow:visible; text-overflow:unset; word-break:break-word; margin-top:2px;
@@ -382,7 +379,7 @@
           <div class="title">Gare E2K</div>
           <div class="pill" aria-hidden="true"></div>
         </div>
-        <div class="subtitle">Marzo 2026 • Seleziona un brand → inserisci la produzione → calcolo automatico soglia e guadagno.</div>
+        <div class="subtitle">Aprile 2026 • Fastweb aggiornato • ho.mobile opzionale in multibrand.</div>
       </div>
 
       <div class="topActions">
@@ -454,37 +451,37 @@
       <button class="tile" data-open="acea" type="button">
         <div class="accent" style="background:var(--acea)"></div>
         <h3 style="color:var(--acea)">Gara Acea</h3>
-        <p>Soglie AUTO • bollettino quantitativo • bonus +3 con FW Energy ≥ 5</p>
+        <p>Invariata • soglie AUTO • bollettino quantitativo • bonus FW Energy</p>
       </button>
 
       <button class="tile" data-open="fwEnergy" type="button">
         <div class="accent" style="background:var(--fastweb)"></div>
         <h3 style="color:var(--fastweb)">Fastweb Energy</h3>
-        <p>Res LFM / FLEX / FIX + Business • Tier AUTO 1 / 3 / 7 / 10</p>
+        <p>Invariata • Res LFM / FLEX / FIX + Business</p>
       </button>
 
       <button class="tile" data-open="fwTelco" type="button">
         <div class="accent" style="background:var(--fastweb)"></div>
-        <h3 style="color:var(--fastweb)">Fastweb Telco + HO</h3>
-        <p>FW Mobile / Wireline / HO • tier AUTO dove previsto + extra quantitativi</p>
+        <h3 style="color:var(--fastweb)">Fastweb + HO Mobile</h3>
+        <p>Aprile 2026 • gara combinata • ho.mobile attivo/non attivo</p>
       </button>
 
       <button class="tile" data-open="sky" type="button">
         <div class="accent" style="background:var(--sky)"></div>
         <h3 style="color:var(--sky)">Gara Sky</h3>
-        <p>Punti → tier AUTO → compenso + extra trigger unico</p>
+        <p>Compensi aumentati • tier AUTO base / 5 / 10 / 15 / 25 / 50</p>
       </button>
 
       <button class="tile" data-open="tiscali" type="button">
         <div class="accent" style="background:var(--tiscali)"></div>
         <h3 style="color:var(--tiscali)">Gara Tiscali</h3>
-        <p>Mobile + Fissi + Cyber Security • Marzo 2026</p>
+        <p>Invariata • Mobile + Fissi + Cyber Security</p>
       </button>
 
       <button class="tile" data-open="multibrand" type="button">
         <div class="accent" style="background:#111827"></div>
         <h3>Multibrand</h3>
-        <p>Brand attivi: Fastweb+HO / Sky / Acea / Tiscali</p>
+        <p>Fastweb(+HO opzionale) / Sky / Acea / Tiscali + Extra April Sky</p>
       </button>
     </div>
 
@@ -497,7 +494,7 @@
             <span class="dot" style="background:var(--acea)"></span>
             <div>
               <div class="t1">Gara Acea</div>
-              <div class="t2">Tier AUTO su contratti totali • bollettino quantitativo • bonus FW Energy</div>
+              <div class="t2">Invariata • tier AUTO su contratti totali • bollettino quantitativo</div>
             </div>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -515,7 +512,7 @@
             <div class="field">
               <div class="label">Contratti con Bollettino Postale</div>
               <input id="acea_boll_qty" type="number" min="0" value="" placeholder="Quanti contratti a bollettino?" />
-              <div class="hint">Viene applicato −20€ solo su questa quantità.</div>
+              <div class="hint">-20€ solo su questa quantità.</div>
             </div>
           </div>
 
@@ -531,14 +528,14 @@
         </div>
       </div>
 
-      <!-- FASTWEB ENERGY -->
+      <!-- FW ENERGY -->
       <div class="panel hide" data-panel="fwEnergy">
         <div class="panelHd">
           <div class="left">
             <span class="dot" style="background:var(--fastweb)"></span>
             <div>
               <div class="t1">Fastweb Energy</div>
-              <div class="t2">Tier AUTO su contratti totali Energy (1 / 3 / 7 / 10)</div>
+              <div class="t2">Invariata • tier AUTO 1 / 5 / 10 / 15</div>
             </div>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -564,14 +561,14 @@
         </div>
       </div>
 
-      <!-- FASTWEB TELCO + HO -->
+      <!-- FW TELCO + HO -->
       <div class="panel hide" data-panel="fwTelco">
         <div class="panelHd">
           <div class="left">
             <span class="dot" style="background:var(--fastweb)"></span>
             <div>
-              <div class="t1">Fastweb Telco + HO Mobile</div>
-              <div class="t2">FW Mobile / Wireline / HO • tier AUTO + extra quantitativi</div>
+              <div class="t1">Fastweb + HO Mobile</div>
+              <div class="t2">Gara combinata Aprile 2026 • ho.mobile opzionale</div>
             </div>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -600,21 +597,9 @@
                   <option value="business">Mobile Business</option>
                 </select>
               </div>
-
               <div class="field">
-                <div class="label">Tier Mobile</div>
-                <div class="hint" id="fw_mobile_tier_hint">Calcolo automatico su SIM totali: base / 10 / 20 / 30</div>
-              </div>
-
-              <div class="field">
-                <div class="label">SIM con ricarica automatica</div>
-                <input id="fw_auto_qty" type="number" min="0" value="" placeholder="Quante SIM in autoricarica?" />
-                <div class="hint">Usato per il calcolo più preciso della gara Mobile.</div>
-              </div>
-
-              <div class="field">
-                <div class="label">Nota extra boost</div>
-                <div class="hint" id="fw_mobile_boost_hint">FW AUTO/PURA: bonus extra in base ai contratti FW Energy.</div>
+                <div class="label">Tier Fastweb Mobile</div>
+                <div class="hint" id="fw_mobile_tier_hint">Calcolo automatico su totale combinato FW Mobile + HO attivo: base / 15 / 25 / 40</div>
               </div>
             </div>
 
@@ -630,27 +615,32 @@
             <div class="hr"></div>
 
             <div class="boxGroup">
-              <div class="gTitle">Extra quantitativi Fastweb Mobile</div>
+              <div class="gTitle">Correttivi / extra quantitativi Fastweb Mobile</div>
               <div class="miniGrid">
                 <div class="field">
-                  <div class="label">Extra MNP</div>
-                  <input id="fw_m_mnp_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint">Numero contratti con extra MNP.</div>
+                  <div class="label">SIM con ricarica automatica</div>
+                  <input id="fw_auto_qty" type="number" min="0" value="" placeholder="Quante?" />
+                  <div class="hint">Campo di controllo qualità.</div>
+                </div>
+                <div class="field">
+                  <div class="label">Extra MNP Iliad/Poste/Coop</div>
+                  <input id="fw_m_mnp_qty" type="number" min="0" value="" placeholder="Quante?" />
+                  <div class="hint">+20€ solo su SIM Fastweb.</div>
                 </div>
                 <div class="field">
                   <div class="label">Protect</div>
-                  <input id="fw_m_protect_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint">Numero contratti con Protect.</div>
+                  <input id="fw_m_protect_qty" type="number" min="0" value="" placeholder="Quante?" />
+                  <div class="hint">+15€.</div>
                 </div>
                 <div class="field">
-                  <div class="label" id="lbl_fw_m_conv">Convergenza</div>
-                  <input id="fw_m_conv_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint" id="hint_fw_m_conv">Inserisci la quantità in convergenza.</div>
+                  <div class="label">SIM No MNP / correttive</div>
+                  <input id="fw_m_no_mnp_qty" type="number" min="0" value="" placeholder="Quante?" />
+                  <div class="hint" id="fw_no_mnp_hint">Auto: -5€ per SIM.</div>
                 </div>
                 <div class="field">
-                  <div class="label" id="lbl_fw_m_conv_energy">Convergenza con Energy</div>
-                  <input id="fw_m_conv_energy_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint" id="hint_fw_m_conv_energy">Inserisci la quantità con convergenza Energy.</div>
+                  <div class="label">SIM PURE No MNP (senza autoricarica)</div>
+                  <input id="fw_pura_no_mnp_qty" type="number" min="0" value="" placeholder="Quante?" />
+                  <div class="hint">Usato solo in modalità PURA.</div>
                 </div>
               </div>
             </div>
@@ -678,7 +668,7 @@
               </div>
               <div class="field">
                 <div class="label">Tier Wireline</div>
-                <div class="hint">Calcolo automatico sul totale fissi del segmento selezionato.</div>
+                <div class="hint">Invariato • tier AUTO sul totale fissi del segmento selezionato.</div>
               </div>
             </div>
 
@@ -704,24 +694,24 @@
               <div class="gTitle">Extra quantitativi Wireline</div>
               <div class="miniGrid">
                 <div class="field">
-                  <div class="label">Convergenza</div>
+                  <div class="label">Convergenza Fisso + Mobile</div>
                   <input id="fw_w_conv_mobile_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint">Fisso + Mobile.</div>
+                  <div class="hint">+10€ su inserito.</div>
                 </div>
                 <div class="field">
-                  <div class="label">Convergenza con Energy</div>
+                  <div class="label">Convergenza Fisso + Energy</div>
                   <input id="fw_w_conv_energy_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint">Fisso + Energy.</div>
+                  <div class="hint">+10€ su inserito.</div>
                 </div>
                 <div class="field">
                   <div class="label">Protect</div>
                   <input id="fw_w_protect_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint">Numero contratti con Protect.</div>
+                  <div class="hint">+15€ Res • +20€ Bus.</div>
                 </div>
                 <div class="field">
                   <div class="label">Up Plus</div>
                   <input id="fw_w_up_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
-                  <div class="hint">Numero contratti con Up Plus.</div>
+                  <div class="hint">+10€ Res • +15€ Bus.</div>
                 </div>
               </div>
             </div>
@@ -741,38 +731,33 @@
           <div id="fwTab_ho" class="hide">
             <div class="row2">
               <div class="field">
+                <div class="label">Abilitazione brand HO Mobile</div>
+                <select id="ho_enabled">
+                  <option value="1">ATTIVO</option>
+                  <option value="0">NON ATTIVO</option>
+                </select>
+                <div class="hint">Se NON ATTIVO, Fastweb gareggia da solo nel brand multibrand.</div>
+              </div>
+              <div class="field">
                 <div class="label">Scenario tabella HO</div>
                 <select id="ho_mode">
                   <option value="auto">Valori HO (Auto)</option>
                   <option value="pura">Valori HO (Pura)</option>
                 </select>
               </div>
-              <div class="field">
-                <div class="label">Tier HO</div>
-                <div class="hint">Calcolo automatico su SIM totali: base / 5 / 10 / 20</div>
-              </div>
-
-              <div class="field">
-                <div class="label">SIM con ricarica automatica</div>
-                <input id="ho_auto_qty" type="number" min="0" value="" placeholder="Quante SIM in autoricarica?" />
-                <div class="hint">Conteggio dedicato per analisi più precisa.</div>
-              </div>
-
-              <div class="field">
-                <div class="label">Nota</div>
-                <div class="hint">Il totale HO resta calcolato su tutte le SIM inserite.</div>
-              </div>
             </div>
 
             <div class="hr"></div>
 
             <div class="row2">
-              <div class="field"><div class="label">HO 8,95€ & 6,95€</div><input id="ho_895_695" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-              <div class="field"><div class="label">HO 5,95€</div><input id="ho_595" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-              <div class="field"><div class="label">HO 11,95€ & 9,95€</div><input id="ho_1195_995" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-              <div class="field"><div class="label">HO “Tutte le offerte”</div><input id="ho_all" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-              <div class="field"><div class="label">SIM DATI</div><input id="ho_dati" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">HO > 9€</div><input id="ho_gt9" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">HO > 6€ e < 9€</div><input id="ho_mid" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">HO < 6€</div><input id="ho_lt6" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">HO MNP da operatori MAIN</div><input id="ho_main" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">HO No MNP</div><input id="ho_no_mnp" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">SIM DATI</div><input id="ho_data" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">Sostitutiva</div><input id="ho_sost" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">SIM con autoricarica</div><input id="ho_auto_qty" type="number" min="0" value="" placeholder="Quante?" /></div>
             </div>
 
             <div class="hr"></div>
@@ -805,7 +790,7 @@
             <span class="dot" style="background:var(--sky)"></span>
             <div>
               <div class="t1">Gara Sky</div>
-              <div class="t2">Tier AUTO su punti + extra trigger unico</div>
+              <div class="t2">Aprile 2026 • tier AUTO su punti + extra automatico su 3P/TV/WIFI</div>
             </div>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -817,11 +802,11 @@
           <div class="row2">
             <div class="field">
               <div class="label">Tier Sky</div>
-              <div class="hint">Il tier viene calcolato automaticamente sui punti totali.</div>
+              <div class="hint">Calcolo automatico sui punti: base / 5 / 10 / 15 / 25 / 50.</div>
             </div>
             <div class="field">
-              <div class="label">Nota</div>
-              <div class="hint">L’extra si attiva con un solo valore soglia complessivo.</div>
+              <div class="label">Extra aprile</div>
+              <div class="hint">Se fai almeno 4 contratti 3P, prendi +10€ su tutti i 3P, TV e WIFI.</div>
             </div>
           </div>
 
@@ -833,11 +818,11 @@
             <div class="field"><div class="label">3P promo 29,90€ (3 pt)</div><input id="sky_3p_promo" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
             <div class="field"><div class="label">Sky TV (2 pt)</div><input id="sky_tv" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
             <div class="field"><div class="label">Sky WiFi (1 pt)</div><input id="sky_wifi" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-            <div class="field"><div class="label">Sky WiFi per già clienti TV (1 pt)</div><input id="sky_wifi_tvclient" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-            <div class="field"><div class="label">WiFi + Prova (non conv) (1,5 pt)</div><input id="sky_wifi_prova_nc" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+            <div class="field"><div class="label">Sky WiFi già clienti TV (1 pt)</div><input id="sky_wifi_tvclient" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+            <div class="field"><div class="label">WiFi + Prova (non conv.) (1,5 pt)</div><input id="sky_wifi_prova_nc" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
             <div class="field"><div class="label">WiFi + Prova (conv.) (1,5 pt)</div><input id="sky_wifi_prova_c" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-            <div class="field"><div class="label">Prova TV (non convertito) (0,5 pt)</div><input id="sky_prova_nc" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-            <div class="field"><div class="label">Prova TV (convertito) (0,5 pt)</div><input id="sky_prova_c" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+            <div class="field"><div class="label">Prova TV non convertita (0,5 pt)</div><input id="sky_prova_nc" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+            <div class="field"><div class="label">Prova TV convertita (0,5 pt)</div><input id="sky_prova_c" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
             <div class="field"><div class="label">Sky Glass nuovo cliente (2 pt)</div><input id="sky_glass" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
             <div class="field"><div class="label">Sky WiFi Business (1 pt)</div><input id="sky_wifi_bus" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
           </div>
@@ -845,16 +830,26 @@
           <div class="hr"></div>
 
           <div class="boxGroup">
-            <div class="gTitle">Trigger extra Sky</div>
-            <div class="row2">
+            <div class="gTitle">Correttivi Sky</div>
+            <div class="miniGrid">
               <div class="field">
-                <div class="label">Valore per accendere gara extra</div>
-                <input id="sky_extra_trigger_qty" type="number" min="0" value="" placeholder="Inserisci il valore trigger" />
-                <div class="hint">Se il valore è ≤ al totale contratti Sky, attiva +30€ su tutti i 3P e +20€ su tutti i TV. Se supera il totale contratti, nessun extra.</div>
+                <div class="label">Sky TV + Netflix 14,90€</div>
+                <input id="sky_tv_netflix1490_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
+                <div class="hint">-40€ rispetto al compenso Sky TV.</div>
               </div>
               <div class="field">
-                <div class="label">Regola</div>
-                <div class="hint">Il trigger è unico. Se non ci sono 3P o TV, non viene applicato alcun extra anche con trigger valido.</div>
+                <div class="label">WiFi con CC prepagata</div>
+                <input id="sky_wifi_prepaid_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
+                <div class="hint">Malus -30€.</div>
+              </div>
+              <div class="field">
+                <div class="label">WiFi + Prova con CC prepagata</div>
+                <input id="sky_wifiprova_prepaid_qty" type="number" min="0" value="" placeholder="Quanti contratti?" />
+                <div class="hint">Malus -50€.</div>
+              </div>
+              <div class="field">
+                <div class="label">Nota</div>
+                <div class="hint">L’extra +10€ parte automaticamente se i 3P totali sono almeno 4.</div>
               </div>
             </div>
           </div>
@@ -878,7 +873,7 @@
             <span class="dot" style="background:var(--tiscali)"></span>
             <div>
               <div class="t1">Gara Tiscali + Secondari</div>
-              <div class="t2">Mobile + Fissi + Cyber Security + Efficiency/Rent</div>
+              <div class="t2">Invariata</div>
             </div>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -886,7 +881,6 @@
             <button class="btn primary" data-calc="tiscali" type="button">Calcola</button>
           </div>
         </div>
-
         <div class="panelBd">
           <div class="subtabs">
             <div class="subbtn active" data-tistab="tiscali">Tiscali</div>
@@ -904,16 +898,6 @@
               <div class="field">
                 <div class="label">Tier AUTO Fissi</div>
                 <div class="hint" id="tisMetaFixed">-</div>
-              </div>
-              <div class="field">
-                <div class="label">SIM in ricarica manuale</div>
-                <input id="tis_manual_qty" type="number" min="0" value="" placeholder="Quante SIM?" />
-                <div class="hint">Applica -8€ unitari.</div>
-              </div>
-              <div class="field">
-                <div class="label">SIM No MNP</div>
-                <input id="tis_nomnp_qty" type="number" min="0" value="" placeholder="Quante SIM?" />
-                <div class="hint">Gestione correttiva su quantità.</div>
               </div>
             </div>
 
@@ -939,7 +923,7 @@
               <div class="field"><div class="label">Business Power / Ultrainternet Fibra</div><input id="tis_f_power" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">Ultrainternet Affari 2 linee Fibra</div><input id="tis_f_aff2" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">Ultrainternet Affari Premium Fibra</div><input id="tis_f_premium" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-              <div class="field"><div class="label">Ultrainternet Affari Premium 2 linee</div><input id="tis_f_premium2" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">Ultrainternet Affari Premium 2 linee Fibra</div><input id="tis_f_premium2" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">Business 5G FWA</div><input id="tis_f_5g" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">Offerte residenziali Tiscali fisse Fibra</div><input id="tis_f_res_fibra" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">Offerte residenziali fisse FWA</div><input id="tis_f_res_fwa" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
@@ -983,14 +967,14 @@
         </div>
       </div>
 
-      <!-- MULTIBRAND -->
+      <!-- MB -->
       <div class="panel hide" data-panel="multibrand">
         <div class="panelHd">
           <div class="left">
             <span class="dot" style="background:#111827"></span>
             <div>
               <div class="t1">Multibrand E2K</div>
-              <div class="t2">Marzo 2026 • Fastweb+HO / Sky / Acea / Tiscali</div>
+              <div class="t2">Aprile 2026 • con Extra April Sky</div>
             </div>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -1079,30 +1063,51 @@
   const CFG = {
     fwMobile: {
       auto: {
-        perPlan: {
-          "1995": { base:36, t10:57, t20:68, t30:78 },
-          "1495": { base:29, t10:47, t20:56, t30:63 },
-          "1195": { base:22, t10:37, t20:43, t30:49 },
-          "995" : { base:16, t10:26, t20:31, t30:36 }
+        plans: {
+          "1995": { base:31, t15:55, t25:63, t40:71 },
+          "1495": { base:29, t15:51, t25:59, t40:66 },
+          "1195": { base:25, t15:38, t25:44, t40:51 },
+          "995" : { base:22, t15:33, t25:39, t40:44 }
         },
-        extras: { mnp:20, boost2:3, boost5:7, protect:15, conv:15, convEnergy:15 }
+        extras: { mnp:20, fixed1:5, energy4:5, fixed6:10, protect:15, noMnpMinus:5 }
       },
       pura: {
-        perPlan: {
-          "1995": { base:19, t10:24, t20:31, t30:37 },
-          "1495": { base:14, t10:19, t20:25, t30:30 },
-          "1195": { base:10, t10:15, t20:19, t30:22 },
-          "995" : { base: 8, t10:13, t20:16, t30:18 }
+        plans: {
+          "1995": { base:23, t15:34, t25:40, t40:45 },
+          "1495": { base:22, t15:33, t25:38, t40:44 },
+          "1195": { base:20, t15:31, t25:36, t40:41 },
+          "995" : { base:17, t15:27, t25:31, t40:36 }
         },
-        extras: { mnp:20, boost2:3, boost5:7, protect:15, conv:15, convEnergy:15 }
+        extras: { mnp:20, fixed1:5, energy4:5, fixed6:10, protect:15 }
       },
       business: {
-        perPlan: {
-          "1995": { base:60, t10:70, t20:85, t30:100 },
-          "1295": { base:50, t10:65, t20:75, t30:90 },
-          "1095": { base:45, t10:65, t20:75, t30:85 }
+        plans: {
+          "1995": { base:60, t15:70, t25:85, t40:100 },
+          "1295": { base:50, t15:65, t25:75, t40:90 },
+          "1095": { base:45, t15:60, t25:70, t40:85 }
         },
-        extras: { protect:20, conv:25, convEnergy:2 }
+        extras: { fixed1:5, energy4:5, fixed6:10, protect:15, noMnpMinus:25 }
+      }
+    },
+
+    ho: {
+      auto: {
+        gt9:   { base:21, t15:27, t25:31, t40:35 },
+        mid:   { base:20, t15:25, t25:28, t40:31 },
+        lt6:   { base:18, t15:20, t25:23, t40:25 },
+        main:  { base:16, t15:19, t25:21, t40:24 },
+        nomnp: { base:16, t15:19, t25:21, t40:24 },
+        data:  13,
+        sost:  5
+      },
+      pura: {
+        gt9:   { base:16, t15:18, t25:20, t40:23 },
+        mid:   { base:13, t15:15, t25:17, t40:19 },
+        lt6:   { base:9,  t15:10, t25:11, t40:13 },
+        main:  { base:8,  t15:9,  t25:10, t40:11 },
+        nomnp: { base:8,  t15:9,  t25:10, t40:11 },
+        data:  5,
+        sost:  5
       }
     },
 
@@ -1128,33 +1133,33 @@
     },
 
     fwEnergy: {
-      res:{
-        lfm : { t1:80, t3:90, t7:100, t10:110 },
-        flex: { t1:60, t3:70, t7:80,  t10:90  },
-        fix : { t1:50, t3:60, t7:70,  t10:80  }
-      },
-      bus:{
-        flexfix:{ t1:100, t3:105, t7:115, t10:125 }
+      products:{
+        lfm : { t1:80, t5:90, t10:100, t15:110 },
+        flex: { t1:60, t5:70, t10:80,  t15:90  },
+        fix : { t1:50, t5:60, t10:70,  t15:80  },
+        biz : { t1:100, t5:105, t10:115, t15:125 }
       }
     },
 
     sky: {
       products:{
-        bar:      { pts:0,  pay:{ base:200, t5:200, t8:200, t12:200, t20:200 } },
-        p3:       { pts:3,  pay:{ base:140, t5:150, t8:170, t12:195, t20:225 } },
-        p3promo:  { pts:3,  pay:{ base:140, t5:150, t8:170, t12:195, t20:225 } },
-        tv:       { pts:2,  pay:{ base:90,  t5:100, t8:110, t12:125, t20:145 } },
-        wifi:     { pts:1,  pay:{ base:70,  t5:75,  t8:80,  t12:85,  t20:85  } },
-        wifitv:   { pts:1,  pay:{ base:70,  t5:75,  t8:80,  t12:85,  t20:85  } },
-        wifipn:   { pts:1.5,pay:{ base:70,  t5:75,  t8:80,  t12:85,  t20:85  } },
-        wifipc:   { pts:1.5,pay:{ base:105, t5:115, t8:130, t12:150, t20:175 } },
-        provanc:  { pts:0.5,pay:{ base:5,   t5:5,   t8:5,   t12:5,   t20:5   } },
-        provac:   { pts:0.5,pay:{ base:60,  t5:60,  t8:60,  t12:60,  t20:60  } },
-        glass:    { pts:2,  pay:{ base:90,  t5:100, t8:110, t12:130, t20:145 } },
-        wifibus:  { pts:1,  pay:{ base:90,  t5:90,  t8:100, t12:120, t20:120 } }
+        bar:      { pts:0,  pay:{ base:200, t5:200, t10:200, t15:200, t25:200, t50:200 } },
+        p3:       { pts:3,  pay:{ base:140, t5:150, t10:170, t15:195, t25:225, t50:245 } },
+        p3promo:  { pts:3,  pay:{ base:140, t5:150, t10:170, t15:195, t25:225, t50:245 } },
+        tv:       { pts:2,  pay:{ base:90,  t5:100, t10:110, t15:125, t25:145, t50:150 } },
+        wifi:     { pts:1,  pay:{ base:70,  t5:75,  t10:80,  t15:85,  t25:95,  t50:105 } },
+        wifitv:   { pts:1,  pay:{ base:70,  t5:75,  t10:80,  t15:85,  t25:95,  t50:105 } },
+        wifipn:   { pts:1.5,pay:{ base:70,  t5:75,  t10:80,  t15:85,  t25:95,  t50:105 } },
+        wifipc:   { pts:1.5,pay:{ base:105, t5:115, t10:130, t15:150, t25:175, t50:185 } },
+        provanc:  { pts:0.5,pay:{ base:5,   t5:5,   t10:5,   t15:5,   t25:5,   t50:5 } },
+        provac:   { pts:0.5,pay:{ base:60,  t5:60,  t10:60,  t15:60,  t25:60,  t50:60 } },
+        glass:    { pts:2,  pay:{ base:90,  t5:100, t10:110, t15:130, t25:145, t50:155 } },
+        wifibus:  { pts:1,  pay:{ base:90,  t5:100, t10:120, t15:120, t25:130, t50:130 } }
       },
-      extra3p:30,
-      extraTv:20
+      extraApril:10,
+      tv1490Minus:40,
+      wifiPrepaidMinus:30,
+      wifiProvaPrepaidMinus:50
     },
 
     acea: {
@@ -1169,29 +1174,6 @@
       fwBonus:3
     },
 
-    ho: {
-      auto:{
-        per:{
-          v1195_995:{ base:20, t5:25, t10:29, t20:38 },
-          v895_695 :{ base:17, t5:20, t10:24, t20:30 },
-          v595     :{ base:15, t5:17, t10:19, t20:22 },
-          all      :{ base:17, t5:18, t10:20, t20:25 },
-          dati     :{ base:13, t5:13, t10:13, t20:13 },
-          sost     :{ base:5,  t5:5,  t10:5,  t20:5  }
-        }
-      },
-      pura:{
-        per:{
-          v1195_995:{ base:8,  t5:10, t10:13, t20:18 },
-          v895_695 :{ base:6,  t5:8,  t10:10, t20:15 },
-          v595     :{ base:4,  t5:5,  t10:6,  t20:8  },
-          all      :{ base:10, t5:10, t10:10, t20:10 },
-          dati     :{ base:5,  t5:5,  t10:5,  t20:5  },
-          sost     :{ base:5,  t5:5,  t10:5,  t20:5  }
-        }
-      }
-    },
-
     tiscali: {
       mobile:{
         m150:{ t1:16, t5:18, t10:20, t20:22 },
@@ -1199,7 +1181,6 @@
         m250:{ t1:22, t5:24, t10:26, t20:30 },
         m350:{ t1:30, t5:33, t10:36, t20:40 },
         connect:{ fixed:6 },
-
         b100:{ t1:28, t5:30, t10:33, t20:36 },
         b250:{ t1:32, t5:35, t10:38, t20:41 },
         bunlim:{ t1:50, t5:55, t10:60, t20:65 },
@@ -1215,59 +1196,64 @@
         resFibra:{ fixed:70 },
         resFwa:{ fixed:55 }
       },
-      cyber:{
-        c1:13, c2:26, c3:40, c5:65, c10:130
-      }
+      cyber:{ c1:13, c2:26, c3:40, c5:65, c10:130 }
     },
 
     mb: {
       points:{
-        fw_mobile_res:0.25,
-        ho_mobile_res:0.25,
+        fw_mobile:0.25,
+        ho_mobile:0.25,
         fw_fisso_res:0.5,
         fw_fisso_bus:1,
         fw_energy:2,
-        tis_mobile_res:0.25,
-        tis_fisso_bus:1,
-        tis_fisso_res:0.5,
-        acea_lucegas:1,
-        sky_contract:1,
-        sky_prova:0.25,
+        tiscali_mobile_res:0.25,
+        tiscali_fisso_bus:1,
+        tiscali_fisso_res:0.5,
+        acea:1,
+        sky:1,
+        prova_sky:0.25,
         eff_lead:0.5,
         eff_contract:5,
         rent_contract:5
       },
       bonusTable:[
-        { pts:10, b2:50,  b3:100, b4:150 },
-        { pts:20, b2:75,  b3:150, b4:225 },
-        { pts:30, b2:125, b3:250, b4:375 },
-        { pts:40, b2:175, b3:350, b4:525 },
-        { pts:50, b2:225, b3:450, b4:675 },
-        { pts:70, b2:275, b3:550, b4:825 },
-        { pts:90, b2:350, b3:700, b4:1100 },
-      ],
-      extraSkyEnergy:1500
+        { pts:10, b2:50,  b3:100, b4:150, skyExtra:50 },
+        { pts:20, b2:75,  b3:150, b4:225, skyExtra:75 },
+        { pts:30, b2:125, b3:250, b4:375, skyExtra:100 },
+        { pts:40, b2:175, b3:350, b4:525, skyExtra:125 },
+        { pts:50, b2:225, b3:450, b4:675, skyExtra:150 },
+        { pts:70, b2:275, b3:550, b4:825, skyExtra:175 },
+        { pts:90, b2:350, b3:700, b4:1100, skyExtra:200 }
+      ]
     }
   };
 
-  const pickTierByQty = (qty, thresholds)=>{
-    if(qty<=0) return null;
-    let best = thresholds[0];
-    for(const t of thresholds){ if(qty>=t) best=t; }
-    return 't' + String(best);
-  };
-  const pickFwMobileTier = (qty)=>{
+  const pickAceaTier = (qty)=>{
+    if(qty>=55) return 't55';
     if(qty>=30) return 't30';
-    if(qty>=20) return 't20';
+    if(qty>=15) return 't15';
+    if(qty>=5) return 't5';
+    return 't1';
+  };
+  const pickFwEnergyTier = (qty)=>{
+    if(qty>=15) return 't15';
     if(qty>=10) return 't10';
+    if(qty>=5) return 't5';
+    return 't1';
+  };
+  const pickFwHoTier = (qty)=>{
+    if(qty>=40) return 't40';
+    if(qty>=25) return 't25';
+    if(qty>=15) return 't15';
     return 'base';
   };
-  const pickSkyTierByPoints = (pts)=>{
-    if(pts < 5) return 'base';
-    if(pts < 8) return 't5';
-    if(pts < 12) return 't8';
-    if(pts < 20) return 't12';
-    return 't20';
+  const pickSkyTier = (pts)=>{
+    if(pts>=50) return 't50';
+    if(pts>=25) return 't25';
+    if(pts>=15) return 't15';
+    if(pts>=10) return 't10';
+    if(pts>=5) return 't5';
+    return 'base';
   };
   const pickWirelineTier = (seg, qty)=>{
     if(qty<=0) return 'base';
@@ -1279,24 +1265,15 @@
     return 'base';
   };
   const pickTiscaliMobileTier = (qty)=>{
-    if(qty<=0) return 't1';
     if(qty>=20) return 't20';
     if(qty>=10) return 't10';
     if(qty>=5) return 't5';
     return 't1';
   };
   const pickTiscaliFixedTier = (qty)=>{
-    if(qty<=0) return 't1';
     if(qty>=5) return 't5';
     if(qty>=3) return 't3';
     return 't1';
-  };
-  const pickHoTierByQty = (qty)=>{
-    if(qty<=0) return 'base';
-    if(qty>=20) return 't20';
-    if(qty>=10) return 't10';
-    if(qty>=5) return 't5';
-    return 'base';
   };
 
   function calcFwEnergy(){
@@ -1305,13 +1282,13 @@
     const qFix = clamp0(qs('#fw_e_fix').value);
     const qBiz = clamp0(qs('#fw_e_biz').value);
     const qty = qLFM + qFlex + qFix + qBiz;
-    const tier = pickTierByQty(qty, [1,3,7,10]) || 't1';
+    const tier = pickFwEnergyTier(qty);
     let e=0;
-    e += qLFM * (CFG.fwEnergy.res.lfm[tier]||0);
-    e += qFlex* (CFG.fwEnergy.res.flex[tier]||0);
-    e += qFix * (CFG.fwEnergy.res.fix[tier]||0);
-    e += qBiz * (CFG.fwEnergy.bus.flexfix[tier]||0);
-    return { qLFM,qFlex,qFix,qBiz, qty, tier, eur:e, next:nextStep(qty,[1,3,7,10]) };
+    e += qLFM * (CFG.fwEnergy.products.lfm[tier]||0);
+    e += qFlex* (CFG.fwEnergy.products.flex[tier]||0);
+    e += qFix * (CFG.fwEnergy.products.fix[tier]||0);
+    e += qBiz * (CFG.fwEnergy.products.biz[tier]||0);
+    return { qLFM,qFlex,qFix,qBiz, qty, tier, eur:e, next:nextStep(qty,[1,5,10,15]) };
   }
 
   function calcAcea(fwEnergyQty){
@@ -1323,78 +1300,125 @@
       allaccio: clamp0(qs('#acea_allaccio').value),
     };
     const contracts = Object.values(Q).reduce((a,b)=>a+b,0);
-    const tier = pickTierByQty(contracts, [1,5,15,30,55]) || 't1';
-    const bollQtyRaw = clamp0(qs('#acea_boll_qty').value);
-    const bollQty = Math.min(bollQtyRaw, contracts);
+    const tier = pickAceaTier(contracts);
+    const bollQty = Math.min(clamp0(qs('#acea_boll_qty').value), contracts);
 
-    let e = 0;
+    let e=0;
     for(const k of Object.keys(Q)) e += Q[k] * (CFG.acea.products[k].pay[tier]||0);
+    if(fwEnergyQty>=5) e += contracts * CFG.acea.fwBonus;
+    e -= bollQty * CFG.acea.bollMinus;
 
-    const fwBonusOn = fwEnergyQty >= 5;
-    if(fwBonusOn && contracts>0) e += contracts * CFG.acea.fwBonus;
-    if(bollQty > 0) e -= bollQty * CFG.acea.bollMinus;
-
-    return { Q, contracts, tier, bollQty, fwBonusOn, eur:e, next:nextStep(contracts,[1,5,15,30,55]) };
+    return { Q, contracts, tier, bollQty, fwBonusOn: fwEnergyQty>=5, eur:e, next:nextStep(contracts,[1,5,15,30,55]) };
   }
 
-  function calcFwMobile(fwEnergyQty){
+  function calcHoRaw(){
+    const enabled = qs('#ho_enabled').value === '1';
+    const mode = qs('#ho_mode').value;
+    const Q = {
+      gt9: clamp0(qs('#ho_gt9').value),
+      mid: clamp0(qs('#ho_mid').value),
+      lt6: clamp0(qs('#ho_lt6').value),
+      main: clamp0(qs('#ho_main').value),
+      nomnp: clamp0(qs('#ho_no_mnp').value),
+      data: clamp0(qs('#ho_data').value),
+      sost: clamp0(qs('#ho_sost').value),
+      autoQty: clamp0(qs('#ho_auto_qty').value)
+    };
+    const qty = enabled ? (Q.gt9+Q.mid+Q.lt6+Q.main+Q.nomnp+Q.data+Q.sost) : 0;
+    return { enabled, mode, Q, qty };
+  }
+
+  function calcFwMobile(hoQtyForTier, fwEnergyQty, fwWireQty){
     const mode = qs('#fw_mobile_mode').value;
     const q1995 = clamp0(qs('#fw_m_1995').value);
     const q1495 = clamp0(qs('#fw_m_1495').value);
     const q1195 = clamp0(qs('#fw_m_1195').value);
     const q995 = clamp0(qs('#fw_m_995').value);
-    const autoQtyRaw = clamp0(qs('#fw_auto_qty').value);
 
-    const qty = mode === 'business'
+    const qty = mode==='business'
       ? (q1995 + q1495 + q1195)
       : (q1995 + q1495 + q1195 + q995);
 
-    const tier = pickFwMobileTier(qty);
+    const combinedQty = qty + hoQtyForTier;
+    const tier = pickFwHoTier(combinedQty);
     const t = CFG.fwMobile[mode];
     let e=0;
 
     if(mode==='business'){
-      e += q1995 * (t.perPlan['1995'][tier] || 0);
-      e += q1495 * (t.perPlan['1295'][tier] || 0);
-      e += q1195 * (t.perPlan['1095'][tier] || 0);
+      e += q1995 * (t.plans['1995'][tier]||0);
+      e += q1495 * (t.plans['1295'][tier]||0);
+      e += q1195 * (t.plans['1095'][tier]||0);
     } else {
-      e += q1995 * (t.perPlan['1995'][tier] || 0);
-      e += q1495 * (t.perPlan['1495'][tier] || 0);
-      e += q1195 * (t.perPlan['1195'][tier] || 0);
-      e += q995  * (t.perPlan['995'][tier] || 0);
+      e += q1995 * (t.plans['1995'][tier]||0);
+      e += q1495 * (t.plans['1495'][tier]||0);
+      e += q1195 * (t.plans['1195'][tier]||0);
+      e += q995  * (t.plans['995'][tier]||0);
     }
 
+    const autoQty = Math.min(clamp0(qs('#fw_auto_qty').value), qty);
     const mnpQty = Math.min(clamp0(qs('#fw_m_mnp_qty').value), qty);
     const protectQty = Math.min(clamp0(qs('#fw_m_protect_qty').value), qty);
-    const convQty = Math.min(clamp0(qs('#fw_m_conv_qty').value), qty);
-    const convEnergyQty = Math.min(clamp0(qs('#fw_m_conv_energy_qty').value), qty);
-    const autoQty = Math.min(autoQtyRaw, qty);
+    const noMnpQty = Math.min(clamp0(qs('#fw_m_no_mnp_qty').value), qty);
+    const puraNoMnpQty = Math.min(clamp0(qs('#fw_pura_no_mnp_qty').value), qty);
 
-    if(mode==='business'){
-      e += protectQty * t.extras.protect;
-      e += convQty * t.extras.conv;
-      e += convEnergyQty * t.extras.convEnergy;
-    } else {
-      e += mnpQty * t.extras.mnp;
-      e += protectQty * t.extras.protect;
-      e += convQty * t.extras.conv;
-      e += convEnergyQty * t.extras.convEnergy;
+    if(mode!=='business') e += mnpQty * t.extras.mnp;
+    e += protectQty * t.extras.protect;
 
-      if(mode==='auto'){
-        if(fwEnergyQty >= 5) e += autoQty * t.extras.boost5;
-        else if(fwEnergyQty >= 2) e += autoQty * t.extras.boost2;
+    // ✅ extra 5/5/10 SOLO su SIM FASTWEB, non su HO
+    if(fwWireQty >= 1) e += qty * t.extras.fixed1;
+    if(fwEnergyQty >= 4) e += qty * t.extras.energy4;
+    if(fwWireQty >= 6) e += qty * t.extras.fixed6;
+
+    if(mode==='auto') e -= noMnpQty * t.extras.noMnpMinus;
+    if(mode==='business') e -= noMnpQty * t.extras.noMnpMinus;
+
+    if(mode==='pura'){
+      if(noMnpQty>0){
+        const avg = qty>0 ? e/qty : 0;
+        e -= noMnpQty * (avg * 0.65);
       }
-      if(mode==='pura'){
-        if(fwEnergyQty >= 5) e += qty * t.extras.boost5;
-        else if(fwEnergyQty >= 2) e += qty * t.extras.boost2;
+      if(puraNoMnpQty>0){
+        const avg = qty>0 ? e/qty : 0;
+        e -= puraNoMnpQty * (avg * 0.65);
       }
     }
 
     return {
-      mode, tier, q1995,q1495,q1195,q995, qty, autoQty,
-      mnpQty, protectQty, convQty, convEnergyQty,
-      eur:e, next:nextStep(qty,[10,20,30])
+      mode, tier, combinedQty, q1995,q1495,q1195,q995, qty, autoQty,
+      mnpQty, protectQty, noMnpQty, puraNoMnpQty,
+      eur:round2(e), next:nextStep(combinedQty,[15,25,40])
     };
+  }
+
+  function calcHo(modeTierQty){
+    const enabled = qs('#ho_enabled').value === '1';
+    const mode = qs('#ho_mode').value;
+    const tier = pickFwHoTier(modeTierQty);
+    const map = CFG.ho[mode];
+    const Q = {
+      gt9: clamp0(qs('#ho_gt9').value),
+      mid: clamp0(qs('#ho_mid').value),
+      lt6: clamp0(qs('#ho_lt6').value),
+      main: clamp0(qs('#ho_main').value),
+      nomnp: clamp0(qs('#ho_no_mnp').value),
+      data: clamp0(qs('#ho_data').value),
+      sost: clamp0(qs('#ho_sost').value),
+      autoQty: clamp0(qs('#ho_auto_qty').value)
+    };
+    const qty = enabled ? (Q.gt9+Q.mid+Q.lt6+Q.main+Q.nomnp+Q.data+Q.sost) : 0;
+    let e=0;
+
+    if(enabled){
+      e += Q.gt9 * (map.gt9[tier]||0);
+      e += Q.mid * (map.mid[tier]||0);
+      e += Q.lt6 * (map.lt6[tier]||0);
+      e += Q.main * (map.main[tier]||0);
+      e += Q.nomnp * (map.nomnp[tier]||0);
+      e += Q.data * map.data;
+      e += Q.sost * map.sost;
+    }
+
+    return { enabled, mode, tier, Q, qty, eur:e, next:nextStep(modeTierQty,[15,25,40]) };
   }
 
   function calcFwWire(){
@@ -1413,13 +1437,13 @@
     const qty = seg==='res' ? (Q.start+Q.pro+Q.ultra) : (Q.blight+Q.biz+Q.bpro+Q.web+Q.small2);
     const tier = pickWirelineTier(seg, qty);
     const t = CFG.fwWireline[seg];
+    let e=0;
 
-    let e = 0;
     if(seg==='res'){
       e += Q.start * (t.products.start[tier]||0);
       e += Q.pro   * (t.products.pro[tier]||0);
       e += Q.ultra * (t.products.ultra[tier]||0);
-    } else {
+    }else{
       e += Q.blight * (t.products.blight[tier]||0);
       e += Q.biz    * (t.products.biz[tier]||0);
       e += Q.bpro   * (t.products.bpro[tier]||0);
@@ -1437,11 +1461,7 @@
     e += protectQty * t.extras.protect;
     e += upQty * t.extras.up;
 
-    return {
-      seg, tier, Q, qty, eur:e,
-      convMobileQty, convEnergyQty, protectQty, upQty,
-      next: nextStep(qty, seg==='res' ? [3,5,8,15] : [2])
-    };
+    return { seg, tier, Q, qty, eur:e, convMobileQty, convEnergyQty, protectQty, upQty, next:nextStep(qty, seg==='res'?[3,5,8,15]:[2]) };
   }
 
   function calcSky(){
@@ -1467,58 +1487,36 @@
       pts += qty * (CFG.sky.products[k].pts || 0);
     }
 
-    const tier = pickSkyTierByPoints(pts);
+    const tier = pickSkyTier(pts);
 
     for(const k of Object.keys(Q)){
       const qty = Q[k];
       e += qty * (CFG.sky.products[k].pay[tier] || 0);
-      if(k==='provanc' || k==='provac' || k==='wifipn' || k==='wifipc') prove += qty;
+      if(k==='provanc' || k==='provac') prove += qty;
       if(k!=='provanc' && k!=='provac') contractsSky += qty;
     }
 
-    const triggerQty = clamp0(qs('#sky_extra_trigger_qty').value);
-    const triggerValid = triggerQty > 0 && triggerQty <= contractsSky;
-
-    const total3p = Q.p3 + Q.p3promo;
-    const totalTv = Q.tv;
-
-    const extra3pApplied = triggerValid && total3p > 0 ? total3p : 0;
-    const extraTvApplied = triggerValid && totalTv > 0 ? totalTv : 0;
-
-    e += extra3pApplied * CFG.sky.extra3p;
-    e += extraTvApplied * CFG.sky.extraTv;
-
-    return {
-      Q, pts:round2(pts), tier, eur:e, totalItems, contractsSky, prove,
-      triggerQty, triggerValid, extra3pApplied, extraTvApplied,
-      next:nextStep(round2(pts),[5,8,12,20])
-    };
-  }
-
-  function calcHo(){
-    const mode = qs('#ho_mode').value;
-    const Q = {
-      v895_695: clamp0(qs('#ho_895_695').value),
-      v595: clamp0(qs('#ho_595').value),
-      v1195_995: clamp0(qs('#ho_1195_995').value),
-      all: clamp0(qs('#ho_all').value),
-      dati: clamp0(qs('#ho_dati').value),
-      sost: clamp0(qs('#ho_sost').value),
-    };
-    const sims = Object.values(Q).reduce((a,b)=>a+b,0);
-    const tier = pickHoTierByQty(sims);
-    const autoQtyRaw = clamp0(qs('#ho_auto_qty').value);
-    const autoQty = Math.min(autoQtyRaw, sims);
-
-    const map = CFG.ho[mode].per;
-    let e=0;
-    for(const k of Object.keys(Q)){
-      const qty = Q[k];
-      const conf = map[k];
-      e += qty * (conf.fixed != null ? conf.fixed : (conf[tier]||0));
+    const total3PContracts = Q.p3 + Q.p3promo;
+    const extraAprilActive = total3PContracts >= 4;
+    if(extraAprilActive){
+      e += total3PContracts * CFG.sky.extraApril;
+      e += Q.tv * CFG.sky.extraApril;
+      e += (Q.wifi + Q.wifitv) * CFG.sky.extraApril;
     }
 
-    return { Q, sims, tier, mode, autoQty, eur:e, next:nextStep(sims,[5,10,20]) };
+    const tv1490Qty = Math.min(clamp0(qs('#sky_tv_netflix1490_qty').value), Q.tv);
+    const wifiPrepaidQty = Math.min(clamp0(qs('#sky_wifi_prepaid_qty').value), Q.wifi + Q.wifitv);
+    const wifiProvaPrepaidQty = Math.min(clamp0(qs('#sky_wifiprova_prepaid_qty').value), Q.wifipn + Q.wifipc);
+
+    e -= tv1490Qty * CFG.sky.tv1490Minus;
+    e -= wifiPrepaidQty * CFG.sky.wifiPrepaidMinus;
+    e -= wifiProvaPrepaidQty * CFG.sky.wifiProvaPrepaidMinus;
+
+    return {
+      Q, pts:round2(pts), tier, eur:round2(e), totalItems, contractsSky, prove,
+      total3PContracts, extraAprilActive, tv1490Qty, wifiPrepaidQty, wifiProvaPrepaidQty,
+      next:nextStep(round2(pts),[5,10,15,25,50])
+    };
   }
 
   function calcTiscali(){
@@ -1528,7 +1526,6 @@
       m250: clamp0(qs('#tis_m_250').value),
       m350: clamp0(qs('#tis_m_350').value),
       connect: clamp0(qs('#tis_m_connect').value),
-
       b100: clamp0(qs('#tis_b_100').value),
       b250: clamp0(qs('#tis_b_250').value),
       bunlim: clamp0(qs('#tis_b_unlim').value),
@@ -1554,13 +1551,10 @@
       c10: clamp0(qs('#tis_c_10').value),
     };
 
-    const manualQty = clamp0(qs('#tis_manual_qty').value);
-    const noMnpQty = clamp0(qs('#tis_nomnp_qty').value);
-
     const totalMobile = m.m150+m.m200+m.m250+m.m350+m.b100+m.b250+m.bunlim+m.b300pro+m.b500pro;
     const totalFixedTierBase = f.power+f.aff2+f.premium+f.premium2+f.f5g;
-    const mtier = pickTiscaliMobileTier(totalMobile > 0 ? totalMobile : 1);
-    const ftier = pickTiscaliFixedTier(totalFixedTierBase > 0 ? totalFixedTierBase : 1);
+    const mtier = pickTiscaliMobileTier(totalMobile);
+    const ftier = pickTiscaliFixedTier(totalFixedTierBase);
 
     let e=0;
     e += m.m150 * (CFG.tiscali.mobile.m150[mtier]||0);
@@ -1568,7 +1562,6 @@
     e += m.m250 * (CFG.tiscali.mobile.m250[mtier]||0);
     e += m.m350 * (CFG.tiscali.mobile.m350[mtier]||0);
     e += m.connect * (CFG.tiscali.mobile.connect.fixed||0);
-
     e += m.b100 * (CFG.tiscali.mobile.b100[mtier]||0);
     e += m.b250 * (CFG.tiscali.mobile.b250[mtier]||0);
     e += m.bunlim * (CFG.tiscali.mobile.bunlim[mtier]||0);
@@ -1589,26 +1582,16 @@
     e += cyber.c5 * CFG.tiscali.cyber.c5;
     e += cyber.c10 * CFG.tiscali.cyber.c10;
 
-    const eligibleMobileQty = totalMobile;
-    const manualApplied = Math.min(manualQty, eligibleMobileQty);
-    e -= manualApplied * 8;
-
-    const noMnpApplied = Math.min(noMnpQty, eligibleMobileQty);
-    const avgUnit = eligibleMobileQty > 0 ? (e / Math.max(1,(eligibleMobileQty + totalFixedTierBase + f.resFibra + f.resFwa + cyber.c1 + cyber.c2 + cyber.c3 + cyber.c5 + cyber.c10))) : 0;
-    e -= noMnpApplied * (avgUnit * 0.75);
-
     const totMobileRes = m.m150+m.m200+m.m250+m.m350;
     const totFissoRes = f.resFibra+f.resFwa;
     const totFissoBus = f.power+f.aff2+f.premium+f.premium2+f.f5g;
     const totalItems = totMobileRes + (m.b100+m.b250+m.bunlim+m.b300pro+m.b500pro) + m.connect + totFissoRes + totFissoBus + cyber.c1+cyber.c2+cyber.c3+cyber.c5+cyber.c10;
 
     return {
-      m,f,cyber, eur:round2(e), mtier, ftier,
-      totalMobile, totalFixedTierBase, totalItems,
+      eur:round2(e), totalMobile, totalFixedTierBase, mtier, ftier, totalItems,
       totMobileRes, totFissoRes, totFissoBus,
       nextMobile:nextStep(totalMobile,[5,10,20]),
-      nextFixed:nextStep(totalFixedTierBase,[3,5]),
-      manualApplied, noMnpApplied
+      nextFixed:nextStep(totalFixedTierBase,[3,5])
     };
   }
 
@@ -1620,41 +1603,40 @@
   }
 
   function calcMultibrand(all){
-    const fwBrandActive = (all.fwMobile.qty>=1) && (all.ho.sims>=1) && (all.fwWire.qty>=1) && (all.fwEnergy.qty>=1);
+    const hoEnabled = all.ho.enabled;
+    const fwBrandActive = hoEnabled
+      ? ((all.fwMobile.qty>=1) && (all.ho.qty>=1) && (all.fwWire.qty>=1) && (all.fwEnergy.qty>=1))
+      : ((all.fwMobile.qty>=1) && (all.fwWire.qty>=1) && (all.fwEnergy.qty>=1));
+
     const skyActive = all.sky.contractsSky >= 1;
     const aceaActive = all.acea.contracts >= 1;
-    const tiscaliActive = (all.tiscali.totalMobile>=1) && ((all.tiscali.totFissoRes + all.tiscali.totFissoBus) >= 1);
+    const tiscaliActive = (all.tiscali.totalMobile>=1) && ((all.tiscali.totFissoRes + all.tiscali.totFissoBus)>=1);
 
-    let brands = 0;
+    let brands=0;
     if(fwBrandActive) brands++;
     if(skyActive) brands++;
     if(aceaActive) brands++;
     if(tiscaliActive) brands++;
 
-    const pts_fw_mobile = all.fwMobile.qty * CFG.mb.points.fw_mobile_res;
-    const pts_ho_mobile = all.ho.sims * CFG.mb.points.ho_mobile_res;
-    const pts_fw_fisso = all.fwWire.qty * (all.fwWire.seg==='res' ? CFG.mb.points.fw_fisso_res : CFG.mb.points.fw_fisso_bus);
-    const pts_fw_energy = all.fwEnergy.qty * CFG.mb.points.fw_energy;
-
-    const pts_tis_mobile = all.tiscali.totMobileRes * CFG.mb.points.tis_mobile_res;
-    const pts_tis_fres = all.tiscali.totFissoRes * CFG.mb.points.tis_fisso_res;
-    const pts_tis_fbus = all.tiscali.totFissoBus * CFG.mb.points.tis_fisso_bus;
-
-    const pts_acea = all.acea.contracts * CFG.mb.points.acea_lucegas;
-    const pts_sky_contract = all.sky.contractsSky * CFG.mb.points.sky_contract;
-    const pts_sky_prova = all.sky.prove * CFG.mb.points.sky_prova;
-    const pts_eff_lead = all.effrent.lead * CFG.mb.points.eff_lead;
-    const pts_eff_c = all.effrent.effC * CFG.mb.points.eff_contract;
-    const pts_rent_c = all.effrent.rentC * CFG.mb.points.rent_contract;
-
-    let pts =
-      pts_fw_mobile + pts_ho_mobile + pts_fw_fisso + pts_fw_energy +
-      pts_tis_mobile + pts_tis_fres + pts_tis_fbus +
-      pts_acea + pts_sky_contract + pts_sky_prova +
-      pts_eff_lead + pts_eff_c + pts_rent_c;
+    let pts = 0;
+    pts += all.fwMobile.qty * CFG.mb.points.fw_mobile;
+    if(hoEnabled) pts += all.ho.qty * CFG.mb.points.ho_mobile;
+    pts += all.fwWire.qty * (all.fwWire.seg==='res' ? CFG.mb.points.fw_fisso_res : CFG.mb.points.fw_fisso_bus);
+    pts += all.fwEnergy.qty * CFG.mb.points.fw_energy;
+    pts += all.acea.contracts * CFG.mb.points.acea;
+    pts += all.sky.contractsSky * CFG.mb.points.sky;
+    pts += all.sky.prove * CFG.mb.points.prova_sky;
+    pts += all.tiscali.totMobileRes * CFG.mb.points.tiscali_mobile_res;
+    pts += all.tiscali.totFissoRes * CFG.mb.points.tiscali_fisso_res;
+    pts += all.tiscali.totFissoBus * CFG.mb.points.tiscali_fisso_bus;
+    pts += all.effrent.lead * CFG.mb.points.eff_lead;
+    pts += all.effrent.effC * CFG.mb.points.eff_contract;
+    pts += all.effrent.rentC * CFG.mb.points.rent_contract;
 
     const boost10 = (all.fwEnergy.qty >= 10 && all.acea.contracts >= 10) ? 10 : 0;
     pts += boost10;
+
+    pts = round2(pts);
 
     const sorted = [...CFG.mb.bonusTable].sort((a,b)=>a.pts-b.pts);
     const row = sorted.filter(r => pts >= r.pts).sort((a,b)=>b.pts-a.pts)[0] || null;
@@ -1668,44 +1650,45 @@
       else if(brands===2) extra = row.b2;
     }
 
-    const energyContracts = all.acea.contracts + all.fwEnergy.qty;
-    const skyContractsForRule = all.sky.contractsSky;
-    const extraSkyEnergy = (brands>=4 && skyContractsForRule>=10 && energyContracts>=50) ? CFG.mb.extraSkyEnergy : 0;
+    const extraAprilSky = (row && brands>=3 && all.sky.contractsSky>=7) ? row.skyExtra : 0;
 
     const missingBrands = [];
-    if(!fwBrandActive) missingBrands.push({ name:'Fastweb+HO', rule:'Serve 1 FW Mobile + 1 HO + 1 Wireline + 1 Energy' });
-    if(!skyActive) missingBrands.push({ name:'Sky', rule:'Serve almeno 1 contratto Sky' });
+    if(!fwBrandActive) missingBrands.push({
+      name:'Fastweb',
+      rule: hoEnabled
+        ? 'Serve almeno 1 FW Mobile + 1 HO + 1 Fisso + 1 Energy'
+        : 'Serve almeno 1 FW Mobile + 1 Fisso + 1 Energy'
+    });
+    if(!skyActive) missingBrands.push({ name:'Sky', rule:'Serve almeno 1 contratto Sky (la sola Prova non attiva il brand)' });
     if(!aceaActive) missingBrands.push({ name:'Acea', rule:'Serve almeno 1 contratto Acea' });
-    if(!tiscaliActive) missingBrands.push({ name:'Tiscali', rule:'Serve 1 mobile + 1 fisso Tiscali' });
+    if(!tiscaliActive) missingBrands.push({ name:'Tiscali', rule:'Serve almeno 1 mobile e 1 fisso Tiscali' });
 
     return {
-      pts:round2(pts),
-      brands,
-      fwBrandActive, skyActive, aceaActive, tiscaliActive,
-      boost10,
+      pts, brands, fwBrandActive, skyActive, aceaActive, tiscaliActive,
       row, nextRow, missingPtsToNext,
-      tokenNow:tokenForBrandCount(brands,row),
-      tokenNextPts:tokenForBrandCount(brands,nextRow),
+      tokenNow: tokenForBrandCount(brands,row),
+      tokenNextPts: tokenForBrandCount(brands,nextRow),
       missingBrands,
-      extra, extraSkyEnergy,
-      bonus:extra + extraSkyEnergy,
-      energyContracts, skyContractsForRule
+      boost10,
+      extra,
+      extraAprilSky,
+      bonus: extra + extraAprilSky
     };
   }
 
   function renderAll(){
     const fwEnergy = calcFwEnergy();
-    const acea = calcAcea(fwEnergy.qty);
-    const fwMobile = calcFwMobile(fwEnergy.qty);
+    const hoRaw = calcHoRaw();
     const fwWire = calcFwWire();
-    const ho = calcHo();
+    const fwMobile = calcFwMobile(hoRaw.enabled ? hoRaw.qty : 0, fwEnergy.qty, fwWire.qty);
+    const ho = calcHo(fwMobile.qty + (hoRaw.enabled ? hoRaw.qty : 0));
+    const acea = calcAcea(fwEnergy.qty);
     const sky = calcSky();
     const tiscali = calcTiscali();
     const effrent = calcEffRent();
 
     const fwTelcoTotal = fwMobile.eur + fwWire.eur + ho.eur;
     const fastwebTotal = fwEnergy.eur + fwTelcoTotal;
-
     const singles = acea.eur + fwEnergy.eur + fwTelcoTotal + sky.eur + tiscali.eur + effrent.eur;
     const mb = calcMultibrand({ acea, fwEnergy, fwMobile, fwWire, ho, sky, tiscali, effrent });
     const grand = singles + mb.bonus;
@@ -1718,11 +1701,11 @@
     qs('#subAcea').textContent = `Contratti: ${acea.contracts} • Tier: ${acea.tier} • ${fmtNextStep(acea.contracts,[1,5,15,30,55],'soglia')}`;
 
     qs('#totSky').textContent = eur(sky.eur);
-    qs('#subSky').textContent = `Punti: ${sky.pts} • Tier: ${sky.tier} • ${fmtNextStep(sky.pts,[5,8,12,20],'punti')}`;
+    qs('#subSky').textContent = `Punti: ${sky.pts} • Tier: ${sky.tier} • ${fmtNextStep(sky.pts,[5,10,15,25,50],'punti')}`;
 
     qs('#totFastweb').textContent = eur(fastwebTotal);
     qs('#subFastweb').textContent = `FW Energy ${eur(fwEnergy.eur)} • FW Telco ${eur(fwMobile.eur + fwWire.eur)} • HO ${eur(ho.eur)}`;
-    qs('#subFastweb2').textContent = `FW Mobile tier: ${fwMobile.tier} • Wireline tier: ${fwWire.tier} • FW brand MB: ${mb.fwBrandActive ? 'ATTIVO' : 'NON ATTIVO'}`;
+    qs('#subFastweb2').textContent = `Tier combinato FW+HO: ${fwMobile.tier} • Brand MB: ${mb.fwBrandActive ? 'ATTIVO' : 'NON ATTIVO'}`;
 
     qs('#totTiscali').textContent = eur(tiscali.eur);
     qs('#subTiscali').textContent = `Mob tot: ${tiscali.totalMobile} • Tier: ${tiscali.mtier} • ${fmtNextStep(tiscali.totalMobile,[5,10,20],'mob')}`;
@@ -1757,10 +1740,10 @@
 
     qs('#insNote').innerHTML = `<span>${(mb.pts < 10 || mb.brands < 2)
       ? `Nota: per attivare il gettone MB servono almeno 10 punti e 2 brand attivi (ora ${mb.pts} pt / ${mb.brands} brand).`
-      : `Nota: gettone attuale = ${eur(mb.tokenNow)} • Bonus MB totale = ${eur(mb.bonus)}.`}</span>`;
+      : `Nota: gettone attuale = ${eur(mb.tokenNow)} • Extra April Sky = ${eur(mb.extraAprilSky)} • Bonus MB totale = ${eur(mb.bonus)}.`}</span>`;
 
     qs('#acea_eur').textContent = eur(acea.eur);
-    qs('#acea_meta').textContent = `Contratti: ${acea.contracts} • Tier: ${acea.tier} • Boll.: ${acea.bollQty} • Bonus FW: ${acea.fwBonusOn ? 'ON' : 'OFF'}`;
+    qs('#acea_meta').textContent = `Contratti: ${acea.contracts} • Tier: ${acea.tier} • Boll.: ${acea.bollQty} • Bonus FW Energy: ${acea.fwBonusOn ? 'ON' : 'OFF'}`;
     qs('#acea_detail').textContent =
 `FLEX: ${acea.Q.flex}
 SPRINT&FIX: ${acea.Q.sprintfix}
@@ -1768,10 +1751,10 @@ BUSINESS: ${acea.Q.business}
 SUBENTRO: ${acea.Q.subentro}
 ALLACCIO: ${acea.Q.allaccio}
 Bollettino: ${acea.bollQty}
-+3€ con FW Energy≥5: ${acea.fwBonusOn ? 'SI' : 'NO'}`;
++3€ con Fastweb Energy ≥ 5: ${acea.fwBonusOn ? 'SI' : 'NO'}`;
 
     qs('#fwEnergy_eur').textContent = eur(fwEnergy.eur);
-    qs('#fwEnergy_meta').textContent = `Contratti: ${fwEnergy.qty} • Tier: ${fwEnergy.tier} • ${fmtNextStep(fwEnergy.qty,[1,3,7,10],'soglia')}`;
+    qs('#fwEnergy_meta').textContent = `Contratti: ${fwEnergy.qty} • Tier: ${fwEnergy.tier} • ${fmtNextStep(fwEnergy.qty,[1,5,10,15],'soglia')}`;
     qs('#fwEnergy_detail').textContent =
 `LFM: ${fwEnergy.qLFM}
 FLEX: ${fwEnergy.qFlex}
@@ -1779,38 +1762,47 @@ FIX: ${fwEnergy.qFix}
 BUSINESS: ${fwEnergy.qBiz}`;
 
     qs('#fwMobile_eur').textContent = eur(fwMobile.eur);
-    qs('#fwMobile_meta').textContent = `SIM: ${fwMobile.qty} • Mode: ${fwMobile.mode} • Tier AUTO: ${fwMobile.tier}`;
+    qs('#fwMobile_meta').textContent = `SIM FW: ${fwMobile.qty} • Mode: ${fwMobile.mode} • Tier combinato: ${fwMobile.tier}`;
     qs('#fwMobile_detail').textContent =
 `19,95: ${fwMobile.q1995}
 14,95/12,95: ${fwMobile.q1495}
 11,95/10,95: ${fwMobile.q1195}
 9,95: ${fwMobile.q995}
-SIM autoricarica: ${fwMobile.autoQty}
-Extra MNP: ${fwMobile.mnpQty}
+Tot FW Mobile: ${fwMobile.qty}
+Tot combinato FW+HO: ${fwMobile.combinedQty}
+Autoricarica: ${fwMobile.autoQty}
+Extra MNP Iliad/Poste/Coop: ${fwMobile.mnpQty}
 Protect: ${fwMobile.protectQty}
-Convergenza: ${fwMobile.convQty}
-Convergenza con Energy: ${fwMobile.convEnergyQty}`;
+No MNP / correttive: ${fwMobile.noMnpQty}
+PURE No MNP: ${fwMobile.puraNoMnpQty}
+Bonus soglia applicati SOLO su SIM Fastweb:
+- almeno 1 fisso: ${fwWire.qty>=1 ? 'ON' : 'OFF'}
+- almeno 4 FW Energy: ${fwEnergy.qty>=4 ? 'ON' : 'OFF'}
+- almeno 6 fissi: ${fwWire.qty>=6 ? 'ON' : 'OFF'}`;
 
     qs('#fwWire_eur').textContent = eur(fwWire.eur);
-    qs('#fwWire_meta').textContent = `Fissi: ${fwWire.qty} • Seg: ${fwWire.seg} • Tier AUTO: ${fwWire.tier}`;
+    qs('#fwWire_meta').textContent = `Fissi: ${fwWire.qty} • Seg: ${fwWire.seg} • Tier: ${fwWire.tier}`;
     qs('#fwWire_detail').textContent =
 `RES start/pro/ultra: ${fwWire.Q.start}/${fwWire.Q.pro}/${fwWire.Q.ultra}
 BUS light/biz/bpro/web/small2: ${fwWire.Q.blight}/${fwWire.Q.biz}/${fwWire.Q.bpro}/${fwWire.Q.web}/${fwWire.Q.small2}
-Convergenza: ${fwWire.convMobileQty}
-Convergenza con Energy: ${fwWire.convEnergyQty}
+Convergenza Fisso+Mobile: ${fwWire.convMobileQty}
+Convergenza Fisso+Energy: ${fwWire.convEnergyQty}
 Protect: ${fwWire.protectQty}
 Up Plus: ${fwWire.upQty}`;
 
     qs('#ho_eur').textContent = eur(ho.eur);
-    qs('#ho_meta').textContent = `SIM: ${ho.sims} • Tier AUTO: ${ho.tier} • Mode: ${ho.mode}`;
+    qs('#ho_meta').textContent = `SIM HO: ${ho.qty} • Tier: ${ho.tier} • Mode: ${ho.mode} • Stato brand: ${ho.enabled ? 'ATTIVO' : 'NON ATTIVO'}`;
     qs('#ho_detail').textContent =
-`8,95/6,95: ${ho.Q.v895_695}
-5,95: ${ho.Q.v595}
-11,95/9,95: ${ho.Q.v1195_995}
-Tutte: ${ho.Q.all}
-Dati: ${ho.Q.dati}
-Sost: ${ho.Q.sost}
-SIM autoricarica: ${ho.autoQty}`;
+`Brand HO attivo in multibrand: ${ho.enabled ? 'SI' : 'NO'}
+>9€: ${ho.Q.gt9}
+>6€ e <9€: ${ho.Q.mid}
+<6€: ${ho.Q.lt6}
+MNP da MAIN: ${ho.Q.main}
+No MNP: ${ho.Q.nomnp}
+SIM DATI: ${ho.Q.data}
+Sostitutiva: ${ho.Q.sost}
+SIM con autoricarica: ${ho.Q.autoQty}
+Nota: HO non riceve gli extra Fastweb con 4 Energy o 6 fissi.`;
 
     qs('#fwTelco_eur').textContent = eur(fwTelcoTotal);
     qs('#fwTelco_meta').textContent = `FW Mobile + Wireline + HO`;
@@ -1818,18 +1810,22 @@ SIM autoricarica: ${ho.autoQty}`;
 `FW Mobile: ${eur(fwMobile.eur)}
 Wireline: ${eur(fwWire.eur)}
 HO: ${eur(ho.eur)}
-Totale: ${eur(fwTelcoTotal)}`;
+TOTALE: ${eur(fwTelcoTotal)}`;
 
     qs('#sky_eur').textContent = eur(sky.eur);
-    qs('#sky_meta').textContent = `Punti: ${sky.pts} • Tier AUTO: ${sky.tier} • Contratti: ${sky.contractsSky}`;
+    qs('#sky_meta').textContent = `Punti: ${sky.pts} • Tier: ${sky.tier} • Contratti: ${sky.contractsSky}`;
     qs('#sky_detail').textContent =
 `3P: ${sky.Q.p3} | 3P promo: ${sky.Q.p3promo}
-TV: ${sky.Q.tv} | WiFi: ${sky.Q.wifi} | Glass: ${sky.Q.glass}
-Prove: ${sky.Q.wifipn + sky.Q.wifipc + sky.Q.provanc + sky.Q.provac}
-Trigger inserito: ${sky.triggerQty}
-Trigger valido: ${sky.triggerValid ? 'SI' : 'NO'}
-Extra +30€ applicato ai 3P: ${sky.extra3pApplied}
-Extra +20€ applicato ai TV: ${sky.extraTvApplied}`;
+TV: ${sky.Q.tv}
+WiFi: ${sky.Q.wifi}
+WiFi già clienti TV: ${sky.Q.wifitv}
+WiFi + Prova: ${sky.Q.wifipn + sky.Q.wifipc}
+Glass: ${sky.Q.glass}
+3P totali: ${sky.total3PContracts}
+Extra aprile +10 su 3P/TV/WIFI: ${sky.extraAprilActive ? 'ATTIVO' : 'NON ATTIVO'}
+TV + Netflix 14,90: ${sky.tv1490Qty}
+WiFi con CC prepagata: ${sky.wifiPrepaidQty}
+WiFi + Prova con CC prepagata: ${sky.wifiProvaPrepaidQty}`;
 
     qs('#tisMetaMobile').textContent = `Tot mobile: ${tiscali.totalMobile} → tier ${tiscali.mtier} • ${fmtNextStep(tiscali.totalMobile,[5,10,20],'mob')}`;
     qs('#tisMetaFixed').textContent = `Tot fissi: ${tiscali.totalFixedTierBase} → tier ${tiscali.ftier} • ${fmtNextStep(tiscali.totalFixedTierBase,[3,5],'fissi')}`;
@@ -1840,9 +1836,7 @@ Extra +20€ applicato ai TV: ${sky.extraTvApplied}`;
 `Mobile RES: ${tiscali.totMobileRes}
 Fissi RES: ${tiscali.totFissoRes}
 Fissi BUS: ${tiscali.totFissoBus}
-Manuali -8€ applicate: ${tiscali.manualApplied}
-No MNP gestiti: ${tiscali.noMnpApplied}
-Cyber: ${tiscali.cyber.c1+tiscali.cyber.c2+tiscali.cyber.c3+tiscali.cyber.c5+tiscali.cyber.c10}`;
+Cyber tot: ${clamp0(qs('#tis_c_1').value)+clamp0(qs('#tis_c_2').value)+clamp0(qs('#tis_c_3').value)+clamp0(qs('#tis_c_5').value)+clamp0(qs('#tis_c_10').value)}`;
 
     qs('#er_meta').textContent = `Pezzi: ${effrent.totalItems}`;
     qs('#er_detail').textContent =
@@ -1869,12 +1863,12 @@ Rent contratti: ${effrent.rentC}
       note.textContent = `Serve almeno 10 punti e almeno 2 brand attivi. ${nextPtsTxt}.`;
     } else {
       pillTxt.textContent = 'Multibrand in corsa';
-      note.textContent = `${nextPtsTxt} • Token attuale: ${eur(mb.tokenNow)}`;
+      note.textContent = `${nextPtsTxt} • Token attuale: ${eur(mb.tokenNow)} • Extra April Sky: ${eur(mb.extraAprilSky)}`;
     }
 
     qs('#mb_detail').textContent =
 `Brand attivi:
-- Fastweb+HO: ${mb.fwBrandActive ? 'SI' : 'NO'}
+- Fastweb${ho.enabled ? '+HO' : ''}: ${mb.fwBrandActive ? 'SI' : 'NO'}
 - Sky: ${mb.skyActive ? 'SI' : 'NO'}
 - Acea: ${mb.aceaActive ? 'SI' : 'NO'}
 - Tiscali: ${mb.tiscaliActive ? 'SI' : 'NO'}
@@ -1885,25 +1879,19 @@ Scaglione attuale: ${mb.row ? mb.row.pts : 'NESSUNO (<10)'}
 ${nextPtsTxt}
 
 Gettone attuale (brand=${mb.brands}): ${eur(mb.tokenNow)}
-Gettone prossimo scaglione (brand invariati): ${eur(mb.tokenNextPts)}
+Extra April Sky (>=3 brand e >=7 Sky): ${eur(mb.extraAprilSky)}
 
-Condizione Extra SKY+ENERGY:
-- 4 brand attivi: ${mb.brands>=4 ? 'SI':'NO'}
-- Sky ≥ 10: ${mb.skyContractsForRule>=10 ? 'SI':'NO'} (attuali: ${mb.skyContractsForRule})
-- Energia ≥ 50: ${mb.energyContracts>=50 ? 'SI':'NO'} (attuali: ${mb.energyContracts})
-- Extra Sky+Energy: ${eur(mb.extraSkyEnergy)}
-
-Totale Bonus MB:
-- Gettone MB: ${eur(mb.extra)}
-- Extra Sky+Energy: ${eur(mb.extraSkyEnergy)}
-= Tot MB: ${eur(mb.bonus)}`;
+Bonus totale MB:
+- Gettone: ${eur(mb.extra)}
+- Extra April Sky: ${eur(mb.extraAprilSky)}
+= Totale MB: ${eur(mb.bonus)}`;
 
     qs('#global_detail').textContent =
 `TOTALI:
 - Acea: ${eur(acea.eur)}
 - Fastweb Energy: ${eur(fwEnergy.eur)}
 - Fastweb Mobile: ${eur(fwMobile.eur)}
-- Fastweb Wireline: ${eur(fwWire.eur)}
+- Wireline: ${eur(fwWire.eur)}
 - HO: ${eur(ho.eur)}
 - Sky: ${eur(sky.eur)}
 - Tiscali: ${eur(tiscali.eur)}
@@ -1912,7 +1900,8 @@ Totale Bonus MB:
 MULTIBRAND:
 - Punti: ${mb.pts}
 - Brand attivi: ${mb.brands}
-- Token attuale: ${eur(mb.tokenNow)}
+- Gettone attuale: ${eur(mb.tokenNow)}
+- Extra April Sky: ${eur(mb.extraAprilSky)}
 - Bonus totale: ${eur(mb.bonus)}
 
 TOTALI COMPLESSIVI:
@@ -1973,37 +1962,46 @@ TOTALI COMPLESSIVI:
   function adaptMobileMode(){
     const mode = qs('#fw_mobile_mode').value;
     const inp995 = qs('#fw_m_995');
+    const hint = qs('#fw_no_mnp_hint');
 
     if(mode==='business'){
       qs('#lbl_fw_m_1495').textContent = 'SIM 12,95€';
       qs('#lbl_fw_m_1195').textContent = 'SIM 10,95€';
-      qs('#lbl_fw_m_995').textContent = 'SIM 9,95€ (non usata in Business)';
-      qs('#lbl_fw_m_conv').textContent = 'Convergenza';
-      qs('#lbl_fw_m_conv_energy').textContent = 'SIM con almeno 1 Energy';
-      qs('#hint_fw_m_conv').textContent = 'Numero contratti in convergenza (+25€).';
-      qs('#hint_fw_m_conv_energy').textContent = 'Numero SIM con almeno 1 Energy (+2€).';
-      qs('#fw_mobile_boost_hint').textContent = 'Business: il tier è AUTO su quantità totali.';
+      qs('#lbl_fw_m_995').textContent  = 'SIM 9,95€ (non usata in Business)';
       inp995.value = '';
       inp995.disabled = true;
-      qs('#fw_m_mnp_qty').value = '';
-      qs('#fw_m_mnp_qty').disabled = true;
-      qs('#fw_auto_qty').value = '';
-      qs('#fw_auto_qty').disabled = true;
+      hint.textContent = 'Business: -25€ per SIM No MNP.';
+      qs('#fw_pura_no_mnp_qty').disabled = true;
+      qs('#fw_pura_no_mnp_qty').value = '';
+    } else if(mode==='auto'){
+      qs('#lbl_fw_m_1495').textContent = 'SIM 14,95€';
+      qs('#lbl_fw_m_1195').textContent = 'SIM 11,95€';
+      qs('#lbl_fw_m_995').textContent  = 'SIM 9,95€';
+      inp995.disabled = false;
+      hint.textContent = 'Auto: -5€ per SIM No MNP.';
+      qs('#fw_pura_no_mnp_qty').disabled = true;
+      qs('#fw_pura_no_mnp_qty').value = '';
     } else {
       qs('#lbl_fw_m_1495').textContent = 'SIM 14,95€';
       qs('#lbl_fw_m_1195').textContent = 'SIM 11,95€';
-      qs('#lbl_fw_m_995').textContent = 'SIM 9,95€';
-      qs('#lbl_fw_m_conv').textContent = 'Convergenza';
-      qs('#lbl_fw_m_conv_energy').textContent = 'Convergenza con Energy';
-      qs('#hint_fw_m_conv').textContent = 'Numero contratti in convergenza standard.';
-      qs('#hint_fw_m_conv_energy').textContent = 'Numero contratti in convergenza con Energy.';
-      qs('#fw_mobile_boost_hint').textContent = 'FW AUTO/PURA: bonus extra in base ai contratti FW Energy.';
-      qs('#fw_m_mnp_qty').disabled = false;
-      qs('#fw_auto_qty').disabled = false;
+      qs('#lbl_fw_m_995').textContent  = 'SIM 9,95€';
       inp995.disabled = false;
+      hint.textContent = 'Pura: No MNP al 35% del compenso MNP. Usa anche il campo PURE No MNP.';
+      qs('#fw_pura_no_mnp_qty').disabled = false;
     }
 
-    qs('#fw_mobile_tier_hint').textContent = 'Calcolo automatico su SIM totali: base / 10 / 20 / 30';
+    scheduleRender();
+  }
+
+  function adaptHoEnabled(){
+    const enabled = qs('#ho_enabled').value === '1';
+    [
+      '#ho_gt9','#ho_mid','#ho_lt6','#ho_main','#ho_no_mnp',
+      '#ho_data','#ho_sost','#ho_auto_qty','#ho_mode'
+    ].forEach(sel=>{
+      const el = qs(sel);
+      if(el) el.disabled = !enabled;
+    });
     scheduleRender();
   }
 
@@ -2016,13 +2014,13 @@ TOTALI COMPLESSIVI:
 
     qs('#btnReset').addEventListener('click', ()=>{
       qsa('input[type="number"]').forEach(i=> i.value = '');
-
       qs('#fw_mobile_mode').value = 'auto';
       qs('#fw_w_segment').value = 'res';
       qs('#ho_mode').value = 'auto';
-
+      qs('#ho_enabled').value = '1';
       refreshWirelineUI();
       adaptMobileMode();
+      adaptHoEnabled();
       setFwTab('mobile');
       setTisTab('tiscali');
       renderAll();
@@ -2038,9 +2036,11 @@ TOTALI COMPLESSIVI:
 
     qs('#fw_w_segment').addEventListener('change', refreshWirelineUI);
     qs('#fw_mobile_mode').addEventListener('change', adaptMobileMode);
+    qs('#ho_enabled').addEventListener('change', adaptHoEnabled);
 
     refreshWirelineUI();
     adaptMobileMode();
+    adaptHoEnabled();
     setFwTab('mobile');
     setTisTab('tiscali');
     renderAll();
