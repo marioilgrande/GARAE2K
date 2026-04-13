@@ -15,7 +15,7 @@
       --ho:#5f58a1;
       --eff:#16a34a;
       --rent:#0b2a55;
-      --bg:#eef2ff;
+      --bg:#f4f5f7;
       --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
@@ -27,21 +27,22 @@
       --warn:#f59e0b;
       --bad:#ef4444;
     }
-
+  
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+    html{
+      background:var(--bg);
+    }
+  
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(214,0,107,.14), transparent 55%),
-        radial-gradient(1100px 700px at 90% 0%, rgba(5,168,176,.14), transparent 55%),
-        linear-gradient(180deg, #eef2ff, #f7f7fb 35%, #ffffff);
+      background:var(--bg);
       -webkit-text-size-adjust:100%;
       overscroll-behavior-y:contain;
     }
-
+  
     .shell{
       max-width:1180px;
       margin:0 auto;
@@ -50,24 +51,95 @@
         calc(16px + env(safe-area-inset-right))
         calc(46px + env(safe-area-inset-bottom))
         calc(16px + env(safe-area-inset-left));
+      background:transparent;
     }
-
+  
     .header{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
       margin-bottom:14px;
     }
-    .title{ font-size:44px; line-height:1; font-weight:950; letter-spacing:-.6px; }
-    .subtitle{ margin-top:10px; color:var(--muted); font-weight:800; }
+  
+    .titleRow{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+  
+    .title{
+      font-size:44px;
+      line-height:1;
+      font-weight:950;
+      letter-spacing:-.6px;
+    }
+  
+    .subtitle{
+      margin-top:10px;
+      color:var(--muted);
+      font-weight:800;
+    }
+  
     .pill{
-      height:26px; width:380px; border-radius:999px;
-      background: linear-gradient(90deg, rgba(214,0,107,.22), rgba(214,0,107,.06));
-      box-shadow: 0 10px 20px rgba(214,0,107,.10);
+      height:26px;
+      width:380px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(214,0,107,.16), rgba(214,0,107,.04));
+      box-shadow:0 10px 20px rgba(214,0,107,.08);
     }
-
+  
+    .storeCard{
+      margin-top:14px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadowSoft);
+      padding:12px;
+      max-width:520px;
+    }
+  
+    .storeCard .label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:900;
+      margin-bottom:6px;
+      display:block;
+    }
+  
+    .storeCard input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-size:15px;
+      outline:none;
+    }
+  
+    .storeCard input:focus{
+      border-color: rgba(214,0,107,.32);
+      box-shadow:0 0 0 4px rgba(214,0,107,.10);
+    }
+  
+    .storeMeta{
+      margin-top:8px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800;
+    }
+  
     .topActions{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
       margin-top:2px;
+      min-width:280px;
     }
+  
     .btn{
       cursor:pointer;
       border:1px solid var(--border);
@@ -75,39 +147,57 @@
       padding:10px 12px;
       border-radius:14px;
       font-weight:950;
-      box-shadow: var(--shadowSoft);
+      box-shadow:var(--shadowSoft);
       user-select:none;
       white-space:nowrap;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
     }
+  
     .btn.primary{
       border-color: rgba(214,0,107,.30);
-      background: linear-gradient(90deg, rgba(214,0,107,.14), rgba(255,255,255,1));
+      background:linear-gradient(90deg, rgba(214,0,107,.14), rgba(255,255,255,1));
     }
-
+  
+    .btn.dark{
+      background:#0f172a;
+      color:#fff;
+      border-color:#0f172a;
+    }
+  
     .kpis{
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns:repeat(3, minmax(0,1fr));
       gap:14px;
       margin:14px 0 14px;
     }
+  
     .kpiCard{
       background:var(--card);
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
       padding:16px 18px;
     }
-    .kpiCard .k{ color:var(--muted); font-weight:900; }
-    .kpiCard .v{ font-size:28px; font-weight:950; margin-top:6px; }
-
+  
+    .kpiCard .k{
+      color:var(--muted);
+      font-weight:900;
+    }
+  
+    .kpiCard .v{
+      font-size:28px;
+      font-weight:950;
+      margin-top:6px;
+    }
+  
     .brandTotals{
       display:grid;
-      grid-template-columns: repeat(5, minmax(0,1fr));
+      grid-template-columns:repeat(5, minmax(0,1fr));
       gap:12px;
       margin:10px 0 14px;
     }
+  
     .bCard{
       background:var(--card);
       border:1px solid var(--border);
@@ -117,38 +207,87 @@
       overflow:hidden;
       position:relative;
     }
+  
     .bCard .bTop{
-      display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
     }
-    .bCard .bName{ font-weight:950; font-size:13px; color:var(--muted); letter-spacing:.2px; }
-    .bCard .bVal{ font-weight:950; font-size:22px; line-height:1; }
+  
+    .bCard .bName{
+      font-weight:950;
+      font-size:13px;
+      color:var(--muted);
+      letter-spacing:.2px;
+    }
+  
+    .bCard .bVal{
+      font-weight:950;
+      font-size:22px;
+      line-height:1;
+    }
+  
     .bCard .bSub{
-      font-size:11px; color:var(--muted); font-weight:850; line-height:1.25;
-      white-space:normal; overflow:visible; text-overflow:unset; word-break:break-word; margin-top:2px;
+      font-size:11px;
+      color:var(--muted);
+      font-weight:850;
+      line-height:1.25;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
+      word-break:break-word;
+      margin-top:2px;
     }
+  
     .bAccent{
-      position:absolute; right:-34px; top:-24px; width:120px; height:120px; border-radius:50%; opacity:.14; pointer-events:none;
+      position:absolute;
+      right:-34px;
+      top:-24px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      opacity:.14;
+      pointer-events:none;
     }
-
+  
     .insights{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadowSoft);
-      padding: 14px 16px;
-      margin: 0 0 18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadowSoft);
+      padding:14px 16px;
+      margin:0 0 18px;
     }
-    .insTitle{ font-weight:950; letter-spacing:-.2px; font-size:14px; margin-bottom:8px; }
-    .insLine{ font-weight:900; color:#0f172a; font-size:13px; line-height:1.35; margin-top:6px; }
-    .insLine span{ color: var(--muted); font-weight:850; }
-
+  
+    .insTitle{
+      font-weight:950;
+      letter-spacing:-.2px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+  
+    .insLine{
+      font-weight:900;
+      color:#0f172a;
+      font-size:13px;
+      line-height:1.35;
+      margin-top:6px;
+    }
+  
+    .insLine span{
+      color:var(--muted);
+      font-weight:850;
+    }
+  
     .grid{
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns:repeat(3, minmax(0,1fr));
       gap:16px;
       margin-top:4px;
-      isolation:isolate;
     }
+  
     .tile{
       position:relative;
       z-index:0;
@@ -161,8 +300,8 @@
       cursor:pointer;
       overflow:hidden;
       text-align:left;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
       transition:transform .15s ease;
       width:100%;
       margin:0;
@@ -170,23 +309,54 @@
       -webkit-appearance:none;
       display:block;
     }
-    .tile h3{ margin:0; font-size:26px; font-weight:950; letter-spacing:-.2px; }
-    .tile p{ margin:8px 0 0; color:var(--muted); font-weight:850; line-height:1.25; font-size:18px; }
-    .tile:focus,.tile:focus-visible{ outline:none; z-index:0; }
-    .accent{
-      position:absolute; right:-40px; top:8px; width:180px; height:180px; border-radius:50%; opacity:.16; pointer-events:none;
+  
+    .tile h3{
+      margin:0;
+      font-size:26px;
+      font-weight:950;
+      letter-spacing:-.2px;
     }
+  
+    .tile p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-weight:850;
+      line-height:1.25;
+      font-size:18px;
+    }
+  
+    .tile:focus,.tile:focus-visible{
+      outline:none;
+      z-index:0;
+    }
+  
+    .accent{
+      position:absolute;
+      right:-40px;
+      top:8px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      opacity:.16;
+      pointer-events:none;
+    }
+  
     .tile[data-open="multibrand"]{ grid-column:span 2 !important; }
-
+  
     @media (hover:hover) and (pointer:fine){
       .tile:hover{ transform:translateY(-1px); }
     }
+  
     @media (hover:none) and (pointer:coarse){
       .tile:hover{ transform:none !important; }
       .tile:active{ transform:translateY(-1px); }
     }
-
-    .panelWrap{ display:none; margin-top:18px; }
+  
+    .panelWrap{
+      display:none;
+      margin-top:18px;
+    }
+  
     .panel{
       background:var(--card);
       border:1px solid var(--border);
@@ -194,35 +364,77 @@
       box-shadow:var(--shadow);
       overflow:hidden;
     }
+  
     .panelHd{
       padding:16px 18px;
       border-bottom:1px solid var(--border);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      background: linear-gradient(180deg, rgba(15,23,42,.03), rgba(15,23,42,0));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      background:linear-gradient(180deg, rgba(15,23,42,.03), rgba(15,23,42,0));
       flex-wrap:wrap;
     }
-    .panelHd .left{ display:flex; align-items:center; gap:12px; }
-    .dot{
-      width:12px; height:12px; border-radius:999px; background: var(--base); box-shadow: 0 0 0 4px rgba(214,0,107,.12);
+  
+    .panelHd .left{
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
-    .panelHd .t1{ font-weight:950; font-size:16px; }
-    .panelHd .t2{ color:var(--muted); font-weight:850; font-size:12px; margin-top:2px; }
+  
+    .dot{
+      width:12px;
+      height:12px;
+      border-radius:999px;
+      background:var(--base);
+      box-shadow:0 0 0 4px rgba(214,0,107,.12);
+    }
+  
+    .panelHd .t1{
+      font-weight:950;
+      font-size:16px;
+    }
+  
+    .panelHd .t2{
+      color:var(--muted);
+      font-weight:850;
+      font-size:12px;
+      margin-top:2px;
+    }
+  
     .panelBd{ padding:18px; }
-
+  
     .row2{
       display:grid;
       grid-template-columns:1fr;
       gap:12px;
     }
-    @media(min-width:920px){ .row2{ grid-template-columns:1fr 1fr; } }
-
-    .field{ display:flex; flex-direction:column; gap:6px; }
-    .label{
-      font-size:12px; color:var(--muted); font-weight:900;
-      display:flex; justify-content:space-between; align-items:center;
+  
+    @media(min-width:920px){
+      .row2{ grid-template-columns:1fr 1fr; }
     }
-    .hint{ font-size:11px; color:var(--muted); font-weight:800; }
-
+  
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+  
+    .label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:900;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+  
+    .hint{
+      font-size:11px;
+      color:var(--muted);
+      font-weight:800;
+    }
+  
     input[type="number"], select{
       width:100%;
       padding:12px 12px;
@@ -232,13 +444,20 @@
       font-size:14px;
       outline:none;
     }
+  
     input[type="number"]:focus, select:focus{
-      border-color: rgba(214,0,107,.32);
-      box-shadow: 0 0 0 4px rgba(214,0,107,.10);
+      border-color:rgba(214,0,107,.32);
+      box-shadow:0 0 0 4px rgba(214,0,107,.10);
     }
+  
     input[type="number"]::placeholder{ color:#94a3b8; }
-
-    .subtabs{ display:flex; flex-wrap:wrap; gap:8px; }
+  
+    .subtabs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+  
     .subbtn{
       cursor:pointer;
       padding:9px 10px;
@@ -248,51 +467,72 @@
       font-weight:950;
       font-size:12px;
       user-select:none;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
     }
+  
     .subbtn.active{
       border-color: rgba(15,23,42,.28);
-      box-shadow: 0 10px 18px rgba(15,23,42,.06);
+      box-shadow:0 10px 18px rgba(15,23,42,.06);
     }
-
+  
     .miniGrid{
       display:grid;
       grid-template-columns:1fr;
       gap:12px;
     }
+  
     @media(min-width:920px){
       .miniGrid{ grid-template-columns:repeat(4, minmax(0,1fr)); }
     }
-
+  
     .boxGroup{
       border:1px solid var(--border);
       border-radius:16px;
       padding:12px;
       background:linear-gradient(180deg, rgba(15,23,42,.02), rgba(15,23,42,0));
     }
+  
     .boxGroup .gTitle{
       font-size:12px;
       font-weight:950;
       color:var(--text);
       margin-bottom:8px;
     }
-
+  
     .hide{ display:none !important; }
-    .hr{ height:1px; background: var(--border); margin:14px 0; }
-
+    .hr{
+      height:1px;
+      background:var(--border);
+      margin:14px 0;
+    }
+  
     .resultBox{
       border:1px solid var(--border);
       border-radius:18px;
       padding:14px;
-      background: linear-gradient(180deg, rgba(15,23,42,.02), rgba(15,23,42,0));
+      background:linear-gradient(180deg, rgba(15,23,42,.02), rgba(15,23,42,0));
     }
+  
     .resultBox .rTop{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
     }
-    .resultBox .big{ font-weight:950; font-size:22px; }
-    .resultBox .small{ color:var(--muted); font-weight:850; font-size:12px; }
-
+  
+    .resultBox .big{
+      font-weight:950;
+      font-size:22px;
+    }
+  
+    .resultBox .small{
+      color:var(--muted);
+      font-weight:850;
+      font-size:12px;
+    }
+  
     .mono{
       margin-top:10px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -301,9 +541,11 @@
       line-height:1.35;
       color:#0f172a;
     }
-
+  
     .statusPill{
-      display:inline-flex; align-items:center; gap:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:8px 10px;
       border-radius:999px;
       border:1px solid var(--border);
@@ -311,30 +553,37 @@
       font-weight:950;
       font-size:12px;
     }
-    .statusPill .pDot{ width:10px; height:10px; border-radius:50%; background:var(--ok); }
+  
+    .statusPill .pDot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--ok);
+    }
+  
     .statusPill.warn .pDot{ background:var(--warn); }
     .statusPill.bad .pDot{ background:var(--bad); }
-
+  
     .errBanner{
       display:none;
       margin-top:14px;
       border:1px solid rgba(239,68,68,.35);
-      background: rgba(239,68,68,.08);
+      background:rgba(239,68,68,.08);
       border-radius:16px;
       padding:12px 14px;
       color:#991b1b;
       font-weight:850;
-      box-shadow: var(--shadowSoft);
+      box-shadow:var(--shadowSoft);
       white-space:pre-line;
     }
-
+  
     @media(max-width:980px){
       .grid{ grid-template-columns:1fr; gap:22px; }
       .kpis{ grid-template-columns:1fr; }
       .brandTotals{ grid-template-columns: repeat(2, minmax(0,1fr)); }
       .tile[data-open="multibrand"]{ grid-column:auto !important; }
     }
-
+  
     @media(max-width:640px){
       .shell{
         padding:
@@ -343,29 +592,32 @@
           calc(42px + env(safe-area-inset-bottom))
           calc(12px + env(safe-area-inset-left));
       }
+  
       .title{ font-size:34px; }
       .pill{ width:200px; height:22px; }
       .header{ flex-direction:column; align-items:flex-start; }
       .topActions{ width:100%; justify-content:flex-start; }
       .btn{ width:100%; text-align:center; padding:12px 14px; }
+      .storeCard{ max-width:100%; width:100%; }
       .kpiCard .v{ font-size:26px; }
       .tile h3{ font-size:24px; }
       .tile p{ font-size:16px; }
       .accent{ right:-64px; top:18px; width:170px; height:170px; }
       .panelBd{ padding:14px; }
-      input[type="number"], select{ padding:13px 12px; font-size:16px; }
+      input[type="number"], select, .storeCard input{ padding:13px 12px; font-size:16px; }
       .bCard .bVal{ font-size:20px; }
       .bCard .bSub{ font-size:11px; }
       .insTitle{ font-size:14px; }
       .insLine{ font-size:13px; }
       .grid{ gap:24px; }
+  
       .panelHd{
-        position: sticky;
-        top: calc(env(safe-area-inset-top));
+        position:sticky;
+        top:calc(env(safe-area-inset-top));
         z-index:50;
-        background: rgba(255,255,255,.92);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background:rgba(255,255,255,.96);
+        backdrop-filter:blur(10px);
+        -webkit-backdrop-filter:blur(10px);
       }
     }
   </style>
@@ -374,15 +626,23 @@
 <body>
   <div class="shell">
     <div class="header">
-      <div>
-        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div style="flex:1 1 auto;">
+        <div class="titleRow">
           <div class="title">Gare E2K</div>
           <div class="pill" aria-hidden="true"></div>
         </div>
         <div class="subtitle">Aprile 2026 • Fastweb aggiornato • ho.mobile opzionale in multibrand.</div>
+
+        <div class="storeCard">
+          <label class="label" for="shopName">Nome negozio / partner</label>
+          <input id="shopName" type="text" placeholder="Inserisci il nome del negozio" />
+          <div class="storeMeta" id="saveStatus">Salvataggio locale attivo.</div>
+        </div>
       </div>
 
       <div class="topActions">
+        <button class="btn dark" id="btnPdf">STAMPA PDF</button>
+        <button class="btn" id="btnSave">SALVA DATI</button>
         <button class="btn primary" id="btnCalcAll">CALCOLA TUTTO</button>
         <button class="btn" id="btnReset">RESET</button>
       </div>
@@ -751,8 +1011,8 @@
 
             <div class="row2">
               <div class="field"><div class="label">HO > 9€</div><input id="ho_gt9" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-              <div class="field"><div class="label">HO > 6€ e < 9€</div><input id="ho_mid" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
-              <div class="field"><div class="label">HO < 6€</div><input id="ho_lt6" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">HO > 6€ e &lt; 9€</div><input id="ho_mid" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
+              <div class="field"><div class="label">HO &lt; 6€</div><input id="ho_lt6" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">HO MNP da operatori MAIN</div><input id="ho_main" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">HO No MNP</div><input id="ho_no_mnp" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
               <div class="field"><div class="label">SIM DATI</div><input id="ho_data" type="number" min="0" value="" placeholder="Inserisci quantità" /></div>
@@ -1014,6 +1274,8 @@
 
 <script>
 (function(){
+  const STORAGE_KEY = 'gare_e2k_aprile_2026_state_v2';
+
   const qs = (s, r=document)=> r.querySelector(s);
   const qsa = (s, r=document)=> Array.from(r.querySelectorAll(s));
 
@@ -1024,6 +1286,10 @@
   };
   const clamp0 = (n)=> Math.max(0, Math.floor(num(n)));
   const round2 = (n)=> Math.round((Number(n||0) + Number.EPSILON) * 100) / 100;
+  const nowStamp = ()=> {
+    const d = new Date();
+    return d.toLocaleDateString('it-IT') + ' • ' + d.toLocaleTimeString('it-IT',{hour:'2-digit', minute:'2-digit'});
+  };
 
   const showErr = (msg)=>{
     const el = qs('#errBanner');
@@ -1040,6 +1306,86 @@
     });
   }
 
+  function setSaveStatus(text){
+    const el = qs('#saveStatus');
+    if(el) el.textContent = text;
+  }
+
+  function saveState(silent=false){
+    try{
+      const state = {};
+      qsa('input,select').forEach(el=>{
+        if(!el.id) return;
+        state[el.id] = el.value;
+      });
+
+      const activeFwTab = qs('[data-fwtab].active');
+      const activeTisTab = qs('[data-tistab].active');
+      const openPanel = qsa('[data-panel]').find(p=> !p.classList.contains('hide'));
+
+      state.__meta = {
+        fwTab: activeFwTab ? activeFwTab.dataset.fwtab : 'mobile',
+        tisTab: activeTisTab ? activeTisTab.dataset.tistab : 'tiscali',
+        openPanel: openPanel ? openPanel.dataset.panel : null,
+        dashboardVisible: qs('#dashboard').style.display !== 'none',
+        savedAt: new Date().toISOString()
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if(!silent) setSaveStatus(`Dati salvati in locale • ${nowStamp()}`);
+    }catch(err){
+      console.error(err);
+      setSaveStatus('Errore nel salvataggio locale.');
+    }
+  }
+
+  function loadState(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return false;
+      const state = JSON.parse(raw);
+
+      Object.keys(state).forEach(key=>{
+        if(key === '__meta') return;
+        const el = qs('#' + key);
+        if(!el) return;
+        el.value = state[key];
+      });
+
+      if(state.__meta){
+        if(state.__meta.fwTab) setFwTab(state.__meta.fwTab);
+        if(state.__meta.tisTab) setTisTab(state.__meta.tisTab);
+      }
+
+      refreshWirelineUI();
+      adaptMobileMode();
+      adaptHoEnabled();
+      renderAll();
+
+      if(state.__meta && state.__meta.savedAt){
+        const d = new Date(state.__meta.savedAt);
+        setSaveStatus(`Dati caricati in locale • ${d.toLocaleDateString('it-IT')} • ${d.toLocaleTimeString('it-IT',{hour:'2-digit', minute:'2-digit'})}`);
+      }else{
+        setSaveStatus('Dati caricati in locale.');
+      }
+
+      return true;
+    }catch(err){
+      console.error(err);
+      setSaveStatus('Errore nel caricamento dati.');
+      return false;
+    }
+  }
+
+  function clearState(){
+    try{
+      localStorage.removeItem(STORAGE_KEY);
+      setSaveStatus('Dati locali rimossi.');
+    }catch(err){
+      console.error(err);
+    }
+  }
+
   function nextStep(qty, steps){
     const q = Number(qty||0);
     for(const s of steps){
@@ -1047,11 +1393,13 @@
     }
     return { next:null, missing:0, hasNext:false };
   }
+
   function fmtNextStep(qty, steps, label){
     const ns = nextStep(qty, steps);
     if(!ns.hasNext) return 'Max tier';
     return `Prossima ${label}: ${ns.next} (mancano ${ns.missing})`;
   }
+
   function tokenForBrandCount(brandsCount, rowObj){
     if(!rowObj) return 0;
     if(brandsCount>=4) return rowObj.b4;
@@ -1235,18 +1583,21 @@
     if(qty>=5) return 't5';
     return 't1';
   };
+
   const pickFwEnergyTier = (qty)=>{
     if(qty>=15) return 't15';
     if(qty>=10) return 't10';
     if(qty>=5) return 't5';
     return 't1';
   };
+
   const pickFwHoTier = (qty)=>{
     if(qty>=40) return 't40';
     if(qty>=25) return 't25';
     if(qty>=15) return 't15';
     return 'base';
   };
+
   const pickSkyTier = (pts)=>{
     if(pts>=50) return 't50';
     if(pts>=25) return 't25';
@@ -1255,6 +1606,7 @@
     if(pts>=5) return 't5';
     return 'base';
   };
+
   const pickWirelineTier = (seg, qty)=>{
     if(qty<=0) return 'base';
     if(seg==='bus') return qty>=2 ? 't2' : 'base';
@@ -1264,12 +1616,14 @@
     if(qty>=3) return 't3';
     return 'base';
   };
+
   const pickTiscaliMobileTier = (qty)=>{
     if(qty>=20) return 't20';
     if(qty>=10) return 't10';
     if(qty>=5) return 't5';
     return 't1';
   };
+
   const pickTiscaliFixedTier = (qty)=>{
     if(qty>=5) return 't5';
     if(qty>=3) return 't3';
@@ -1364,7 +1718,6 @@
     if(mode!=='business') e += mnpQty * t.extras.mnp;
     e += protectQty * t.extras.protect;
 
-    // ✅ extra 5/5/10 SOLO su SIM FASTWEB, non su HO
     if(fwWireQty >= 1) e += qty * t.extras.fixed1;
     if(fwEnergyQty >= 4) e += qty * t.extras.energy4;
     if(fwWireQty >= 6) e += qty * t.extras.fixed6;
@@ -1635,7 +1988,6 @@
 
     const boost10 = (all.fwEnergy.qty >= 10 && all.acea.contracts >= 10) ? 10 : 0;
     pts += boost10;
-
     pts = round2(pts);
 
     const sorted = [...CFG.mb.bonusTable].sort((a,b)=>a.pts-b.pts);
@@ -1655,9 +2007,7 @@
     const missingBrands = [];
     if(!fwBrandActive) missingBrands.push({
       name:'Fastweb',
-      rule: hoEnabled
-        ? 'Serve almeno 1 FW Mobile + 1 HO + 1 Fisso + 1 Energy'
-        : 'Serve almeno 1 FW Mobile + 1 Fisso + 1 Energy'
+      rule: hoEnabled ? 'Serve almeno 1 FW Mobile + 1 HO + 1 Fisso + 1 Energy' : 'Serve almeno 1 FW Mobile + 1 Fisso + 1 Energy'
     });
     if(!skyActive) missingBrands.push({ name:'Sky', rule:'Serve almeno 1 contratto Sky (la sola Prova non attiva il brand)' });
     if(!aceaActive) missingBrands.push({ name:'Acea', rule:'Serve almeno 1 contratto Acea' });
@@ -1676,7 +2026,7 @@
     };
   }
 
-  function renderAll(){
+  function getComputedData(){
     const fwEnergy = calcFwEnergy();
     const hoRaw = calcHoRaw();
     const fwWire = calcFwWire();
@@ -1692,6 +2042,17 @@
     const singles = acea.eur + fwEnergy.eur + fwTelcoTotal + sky.eur + tiscali.eur + effrent.eur;
     const mb = calcMultibrand({ acea, fwEnergy, fwMobile, fwWire, ho, sky, tiscali, effrent });
     const grand = singles + mb.bonus;
+
+    return {
+      shopName: (qs('#shopName').value || '').trim(),
+      fwEnergy, hoRaw, fwWire, fwMobile, ho, acea, sky, tiscali, effrent,
+      fwTelcoTotal, fastwebTotal, singles, mb, grand
+    };
+  }
+
+  function renderAll(){
+    const data = getComputedData();
+    const { fwEnergy, fwWire, fwMobile, ho, acea, sky, tiscali, effrent, fwTelcoTotal, fastwebTotal, singles, mb, grand } = data;
 
     qs('#kpiSingles').textContent = eur(singles);
     qs('#kpiMB').textContent = eur(mb.bonus);
@@ -1887,7 +2248,8 @@ Bonus totale MB:
 = Totale MB: ${eur(mb.bonus)}`;
 
     qs('#global_detail').textContent =
-`TOTALI:
+`NEGOZIO: ${(data.shopName || '-')}
+TOTALI:
 - Acea: ${eur(acea.eur)}
 - Fastweb Energy: ${eur(fwEnergy.eur)}
 - Fastweb Mobile: ${eur(fwMobile.eur)}
@@ -1909,6 +2271,185 @@ TOTALI COMPLESSIVI:
 - Tot complessivo: ${eur(grand)}`;
   }
 
+  function buildPdfHtml(){
+    const data = getComputedData();
+    const shopName = data.shopName || 'Negozio non indicato';
+
+    const sections = [
+      {
+        title:'Totali principali',
+        rows:[
+          ['Negozio', shopName],
+          ['Data stampa', new Date().toLocaleDateString('it-IT') + ' ' + new Date().toLocaleTimeString('it-IT',{hour:'2-digit', minute:'2-digit'})],
+          ['Totale gare singole', qs('#kpiSingles').textContent],
+          ['Bonus Multibrand', qs('#kpiMB').textContent],
+          ['Totale complessivo', qs('#kpiGrand').textContent]
+        ]
+      },
+      {
+        title:'Totali per brand',
+        rows:[
+          ['Acea', qs('#totAcea').textContent + ' — ' + qs('#subAcea').textContent],
+          ['Sky', qs('#totSky').textContent + ' — ' + qs('#subSky').textContent],
+          ['Fastweb + HO', qs('#totFastweb').textContent + ' — ' + qs('#subFastweb').textContent + ' — ' + qs('#subFastweb2').textContent],
+          ['Tiscali', qs('#totTiscali').textContent + ' — ' + qs('#subTiscali').textContent + ' — ' + qs('#subTiscali2').textContent],
+          ['Secondari', qs('#totSecondari').textContent + ' — ' + qs('#subSecondari').textContent]
+        ]
+      },
+      {
+        title:'Suggerimenti Multibrand',
+        rows:[
+          ['Step 3 brand', qs('#ins3').textContent],
+          ['Step 4 brand', qs('#ins4').textContent],
+          ['Prossimo scaglione punti', qs('#insPts').textContent],
+          ['Nota', qs('#insNote').textContent]
+        ]
+      },
+      {
+        title:'Dettaglio brand',
+        rows:[
+          ['Acea', qs('#acea_meta').textContent + '\n' + qs('#acea_detail').textContent],
+          ['Fastweb Energy', qs('#fwEnergy_meta').textContent + '\n' + qs('#fwEnergy_detail').textContent],
+          ['Fastweb Mobile', qs('#fwMobile_meta').textContent + '\n' + qs('#fwMobile_detail').textContent],
+          ['Wireline', qs('#fwWire_meta').textContent + '\n' + qs('#fwWire_detail').textContent],
+          ['HO Mobile', qs('#ho_meta').textContent + '\n' + qs('#ho_detail').textContent],
+          ['Fastweb Telco Totale', qs('#fwTelco_meta').textContent + '\n' + qs('#fwTelco_detail').textContent],
+          ['Sky', qs('#sky_meta').textContent + '\n' + qs('#sky_detail').textContent],
+          ['Tiscali', qs('#tis_meta').textContent + '\n' + qs('#tis_detail').textContent],
+          ['Efficiency / Rent', qs('#er_meta').textContent + '\n' + qs('#er_detail').textContent],
+          ['Multibrand', qs('#mb_meta').textContent + '\n' + qs('#mb_detail').textContent]
+        ]
+      }
+    ];
+
+    const sectionsHtml = sections.map(section => `
+      <section class="sec">
+        <h2>${section.title}</h2>
+        <div class="table">
+          ${section.rows.map(row => `
+            <div class="tr">
+              <div class="th">${escapeHtml(row[0])}</div>
+              <div class="td">${escapeHtml(row[1]).replace(/\n/g,'<br>')}</div>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+    `).join('');
+
+    return `
+      <!doctype html>
+      <html lang="it">
+      <head>
+        <meta charset="utf-8">
+        <title>Report Gare E2K</title>
+        <style>
+          *{ box-sizing:border-box; }
+          body{
+            margin:0;
+            font-family:Arial, Helvetica, sans-serif;
+            color:#0f172a;
+            background:#fff;
+            padding:28px;
+          }
+          .head{
+            border-bottom:3px solid #d6006b;
+            padding-bottom:14px;
+            margin-bottom:22px;
+          }
+          .title{
+            font-size:30px;
+            font-weight:900;
+            margin:0 0 6px;
+          }
+          .sub{
+            font-size:14px;
+            color:#475569;
+            margin:0;
+          }
+          .chip{
+            display:inline-block;
+            margin-top:8px;
+            padding:8px 12px;
+            border-radius:999px;
+            background:#fce7f3;
+            color:#9d174d;
+            font-weight:700;
+            font-size:12px;
+          }
+          .sec{
+            margin-bottom:22px;
+            page-break-inside:avoid;
+          }
+          h2{
+            font-size:18px;
+            margin:0 0 10px;
+            color:#0f172a;
+          }
+          .table{
+            border:1px solid #e5e7eb;
+            border-radius:14px;
+            overflow:hidden;
+          }
+          .tr{
+            display:grid;
+            grid-template-columns:220px 1fr;
+            border-top:1px solid #e5e7eb;
+          }
+          .tr:first-child{ border-top:none; }
+          .th{
+            background:#f8fafc;
+            padding:12px;
+            font-weight:800;
+            color:#475569;
+            border-right:1px solid #e5e7eb;
+          }
+          .td{
+            padding:12px;
+            white-space:normal;
+            line-height:1.45;
+          }
+          @media print{
+            body{ padding:16px; }
+            .sec{ break-inside:avoid; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="head">
+          <div class="title">Report Gare E2K</div>
+          <p class="sub">Riepilogo calcolo gare • Aprile 2026</p>
+          <div class="chip">${escapeHtml(shopName)}</div>
+        </div>
+        ${sectionsHtml}
+      </body>
+      </html>
+    `;
+  }
+
+  function escapeHtml(str){
+    return String(str ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  function printPdf(){
+    renderAll();
+    const html = buildPdfHtml();
+    const w = window.open('', '_blank');
+    if(!w){
+      alert('Impossibile aprire la finestra di stampa. Verifica il blocco popup del browser.');
+      return;
+    }
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
+    w.focus();
+    setTimeout(()=> w.print(), 350);
+  }
+
   function openPanel(key){
     const dash = qs('#dashboard');
     const wrap = qs('#panelWrap');
@@ -1928,6 +2469,7 @@ TOTALI COMPLESSIVI:
     });
 
     scheduleRender();
+    saveState(true);
   }
 
   function backToDashboard(){
@@ -1935,6 +2477,7 @@ TOTALI COMPLESSIVI:
     qs('#dashboard').style.display = 'grid';
     requestAnimationFrame(()=> window.scrollTo({top:0, behavior:'smooth'}));
     scheduleRender();
+    saveState(true);
   }
 
   function setFwTab(name){
@@ -2005,34 +2548,61 @@ TOTALI COMPLESSIVI:
     scheduleRender();
   }
 
+  function resetAll(){
+    qsa('input[type="number"]').forEach(i=> i.value = '');
+    qsa('input[type="text"]').forEach(i=> i.value = '');
+    qs('#fw_mobile_mode').value = 'auto';
+    qs('#fw_w_segment').value = 'res';
+    qs('#ho_mode').value = 'auto';
+    qs('#ho_enabled').value = '1';
+    refreshWirelineUI();
+    adaptMobileMode();
+    adaptHoEnabled();
+    setFwTab('mobile');
+    setTisTab('tiscali');
+    renderAll();
+    clearState();
+  }
+
   function bind(){
     qsa('[data-open]').forEach(t=> t.addEventListener('click', ()=> openPanel(t.dataset.open)));
     qsa('[data-back]').forEach(b=> b.addEventListener('click', backToDashboard));
 
-    qs('#btnCalcAll').addEventListener('click', ()=> renderAll());
-    qsa('[data-calc]').forEach(b=> b.addEventListener('click', ()=> renderAll()));
-
-    qs('#btnReset').addEventListener('click', ()=>{
-      qsa('input[type="number"]').forEach(i=> i.value = '');
-      qs('#fw_mobile_mode').value = 'auto';
-      qs('#fw_w_segment').value = 'res';
-      qs('#ho_mode').value = 'auto';
-      qs('#ho_enabled').value = '1';
-      refreshWirelineUI();
-      adaptMobileMode();
-      adaptHoEnabled();
-      setFwTab('mobile');
-      setTisTab('tiscali');
+    qs('#btnCalcAll').addEventListener('click', ()=> {
       renderAll();
+      saveState();
     });
+
+    qsa('[data-calc]').forEach(b=> b.addEventListener('click', ()=> {
+      renderAll();
+      saveState();
+    }));
+
+    qs('#btnSave').addEventListener('click', ()=> saveState());
+    qs('#btnPdf').addEventListener('click', printPdf);
+    qs('#btnReset').addEventListener('click', resetAll);
 
     qsa('input,select').forEach(el=>{
-      el.addEventListener('input', scheduleRender, {passive:true});
-      el.addEventListener('change', scheduleRender, {passive:true});
+      el.addEventListener('input', ()=>{
+        scheduleRender();
+        saveState(true);
+      }, {passive:true});
+
+      el.addEventListener('change', ()=>{
+        scheduleRender();
+        saveState(true);
+      }, {passive:true});
     });
 
-    qsa('[data-fwtab]').forEach(b=> b.addEventListener('click', ()=> setFwTab(b.dataset.fwtab)));
-    qsa('[data-tistab]').forEach(b=> b.addEventListener('click', ()=> setTisTab(b.dataset.tistab)));
+    qsa('[data-fwtab]').forEach(b=> b.addEventListener('click', ()=> {
+      setFwTab(b.dataset.fwtab);
+      saveState(true);
+    }));
+
+    qsa('[data-tistab]').forEach(b=> b.addEventListener('click', ()=> {
+      setTisTab(b.dataset.tistab);
+      saveState(true);
+    }));
 
     qs('#fw_w_segment').addEventListener('change', refreshWirelineUI);
     qs('#fw_mobile_mode').addEventListener('change', adaptMobileMode);
@@ -2043,12 +2613,18 @@ TOTALI COMPLESSIVI:
     adaptHoEnabled();
     setFwTab('mobile');
     setTisTab('tiscali');
-    renderAll();
+
+    const loaded = loadState();
+    if(!loaded){
+      renderAll();
+      setSaveStatus('Nessun salvataggio locale trovato.');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', ()=>{
-    try{ bind(); }
-    catch(e){
+    try{
+      bind();
+    }catch(e){
       showErr("Errore JS durante init:\n" + (e?.stack || e));
       console.error(e);
     }
