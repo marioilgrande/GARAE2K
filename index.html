@@ -2272,159 +2272,326 @@ TOTALI COMPLESSIVI:
   }
 
   function buildPdfHtml(){
-    const data = getComputedData();
-    const shopName = data.shopName || 'Negozio non indicato';
+  const data = getComputedData();
+  const shopName = data.shopName || 'Negozio non indicato';
 
-    const sections = [
-      {
-        title:'Totali principali',
-        rows:[
-          ['Negozio', shopName],
-          ['Data stampa', new Date().toLocaleDateString('it-IT') + ' ' + new Date().toLocaleTimeString('it-IT',{hour:'2-digit', minute:'2-digit'})],
-          ['Totale gare singole', qs('#kpiSingles').textContent],
-          ['Bonus Multibrand', qs('#kpiMB').textContent],
-          ['Totale complessivo', qs('#kpiGrand').textContent]
-        ]
-      },
-      {
-        title:'Totali per brand',
-        rows:[
-          ['Acea', qs('#totAcea').textContent + ' — ' + qs('#subAcea').textContent],
-          ['Sky', qs('#totSky').textContent + ' — ' + qs('#subSky').textContent],
-          ['Fastweb + HO', qs('#totFastweb').textContent + ' — ' + qs('#subFastweb').textContent + ' — ' + qs('#subFastweb2').textContent],
-          ['Tiscali', qs('#totTiscali').textContent + ' — ' + qs('#subTiscali').textContent + ' — ' + qs('#subTiscali2').textContent],
-          ['Secondari', qs('#totSecondari').textContent + ' — ' + qs('#subSecondari').textContent]
-        ]
-      },
-      {
-        title:'Suggerimenti Multibrand',
-        rows:[
-          ['Step 3 brand', qs('#ins3').textContent],
-          ['Step 4 brand', qs('#ins4').textContent],
-          ['Prossimo scaglione punti', qs('#insPts').textContent],
-          ['Nota', qs('#insNote').textContent]
-        ]
-      },
-      {
-        title:'Dettaglio brand',
-        rows:[
-          ['Acea', qs('#acea_meta').textContent + '\n' + qs('#acea_detail').textContent],
-          ['Fastweb Energy', qs('#fwEnergy_meta').textContent + '\n' + qs('#fwEnergy_detail').textContent],
-          ['Fastweb Mobile', qs('#fwMobile_meta').textContent + '\n' + qs('#fwMobile_detail').textContent],
-          ['Wireline', qs('#fwWire_meta').textContent + '\n' + qs('#fwWire_detail').textContent],
-          ['HO Mobile', qs('#ho_meta').textContent + '\n' + qs('#ho_detail').textContent],
-          ['Fastweb Telco Totale', qs('#fwTelco_meta').textContent + '\n' + qs('#fwTelco_detail').textContent],
-          ['Sky', qs('#sky_meta').textContent + '\n' + qs('#sky_detail').textContent],
-          ['Tiscali', qs('#tis_meta').textContent + '\n' + qs('#tis_detail').textContent],
-          ['Efficiency / Rent', qs('#er_meta').textContent + '\n' + qs('#er_detail').textContent],
-          ['Multibrand', qs('#mb_meta').textContent + '\n' + qs('#mb_detail').textContent]
-        ]
-      }
-    ];
+  const hasAcea = data.acea.contracts > 0;
+  const hasFwEnergy = data.fwEnergy.qty > 0;
+  const hasFwMobile = data.fwMobile.qty > 0;
+  const hasFwWire = data.fwWire.qty > 0;
+  const hasHo = data.ho.enabled && data.ho.qty > 0;
+  const hasFwTelco = (data.fwMobile.qty + data.fwWire.qty + data.ho.qty) > 0;
+  const hasSky = (data.sky.totalItems || 0) > 0;
+  const hasTiscali = data.tiscali.totalItems > 0;
+  const hasEffRent = data.effrent.totalItems > 0;
+  const hasMultibrandData =
+    data.mb.pts > 0 ||
+    data.mb.brands > 0 ||
+    data.mb.bonus > 0 ||
+    hasAcea || hasFwEnergy || hasFwTelco || hasSky || hasTiscali || hasEffRent;
 
-    const sectionsHtml = sections.map(section => `
-      <section class="sec">
-        <h2>${section.title}</h2>
-        <div class="table">
-          ${section.rows.map(row => `
-            <div class="tr">
-              <div class="th">${escapeHtml(row[0])}</div>
-              <div class="td">${escapeHtml(row[1]).replace(/\n/g,'<br>')}</div>
-            </div>
-          `).join('')}
-        </div>
-      </section>
-    `).join('');
+  const sections = [];
 
-    return `
-      <!doctype html>
-      <html lang="it">
-      <head>
-        <meta charset="utf-8">
-        <title>Report Gare E2K</title>
-        <style>
-          *{ box-sizing:border-box; }
-          body{
-            margin:0;
-            font-family:Arial, Helvetica, sans-serif;
-            color:#0f172a;
-            background:#fff;
-            padding:28px;
-          }
-          .head{
-            border-bottom:3px solid #d6006b;
-            padding-bottom:14px;
-            margin-bottom:22px;
-          }
-          .title{
-            font-size:30px;
-            font-weight:900;
-            margin:0 0 6px;
-          }
-          .sub{
-            font-size:14px;
-            color:#475569;
-            margin:0;
-          }
-          .chip{
-            display:inline-block;
-            margin-top:8px;
-            padding:8px 12px;
-            border-radius:999px;
-            background:#fce7f3;
-            color:#9d174d;
-            font-weight:700;
-            font-size:12px;
-          }
-          .sec{
-            margin-bottom:22px;
-            page-break-inside:avoid;
-          }
-          h2{
-            font-size:18px;
-            margin:0 0 10px;
-            color:#0f172a;
-          }
-          .table{
-            border:1px solid #e5e7eb;
-            border-radius:14px;
-            overflow:hidden;
-          }
-          .tr{
-            display:grid;
-            grid-template-columns:220px 1fr;
-            border-top:1px solid #e5e7eb;
-          }
-          .tr:first-child{ border-top:none; }
-          .th{
-            background:#f8fafc;
-            padding:12px;
-            font-weight:800;
-            color:#475569;
-            border-right:1px solid #e5e7eb;
-          }
-          .td{
-            padding:12px;
-            white-space:normal;
-            line-height:1.45;
-          }
-          @media print{
-            body{ padding:16px; }
-            .sec{ break-inside:avoid; }
-          }
-        </style>
-      </head>
-      <body>
-        <div class="head">
-          <div class="title">Report Gare E2K</div>
-          <p class="sub">Riepilogo calcolo gare • Aprile 2026</p>
-          <div class="chip">${escapeHtml(shopName)}</div>
-        </div>
-        ${sectionsHtml}
-      </body>
-      </html>
-    `;
+  sections.push({
+    title:'Totali principali',
+    rows:[
+      ['Negozio', shopName],
+      ['Data stampa', new Date().toLocaleDateString('it-IT') + ' ' + new Date().toLocaleTimeString('it-IT',{hour:'2-digit', minute:'2-digit'})],
+      ['Totale gare singole', qs('#kpiSingles').textContent],
+      ['Bonus Multibrand', qs('#kpiMB').textContent],
+      ['Totale complessivo', qs('#kpiGrand').textContent]
+    ]
+  });
+
+  const brandRows = [];
+  if(hasAcea) brandRows.push(['Acea', qs('#totAcea').textContent + ' — ' + qs('#subAcea').textContent]);
+  if(hasSky) brandRows.push(['Sky', qs('#totSky').textContent + ' — ' + qs('#subSky').textContent]);
+  if(hasFwEnergy || hasFwTelco || hasHo) brandRows.push(['Fastweb + HO', qs('#totFastweb').textContent + ' — ' + qs('#subFastweb').textContent + ' — ' + qs('#subFastweb2').textContent]);
+  if(hasTiscali) brandRows.push(['Tiscali', qs('#totTiscali').textContent + ' — ' + qs('#subTiscali').textContent + ' — ' + qs('#subTiscali2').textContent]);
+  if(hasEffRent) brandRows.push(['Secondari', qs('#totSecondari').textContent + ' — ' + qs('#subSecondari').textContent]);
+
+  if(brandRows.length){
+    sections.push({
+      title:'Totali per brand',
+      rows: brandRows
+    });
   }
+
+  sections.push({
+    title:'Suggerimenti Multibrand',
+    rows:[
+      ['Step 3 brand', qs('#ins3').textContent],
+      ['Step 4 brand', qs('#ins4').textContent],
+      ['Prossimo scaglione punti', qs('#insPts').textContent],
+      ['Nota', qs('#insNote').textContent]
+    ]
+  });
+
+  const detailRows = [];
+  if(hasAcea) detailRows.push(['Acea', qs('#acea_meta').textContent + '\n' + qs('#acea_detail').textContent]);
+  if(hasFwEnergy) detailRows.push(['Fastweb Energy', qs('#fwEnergy_meta').textContent + '\n' + qs('#fwEnergy_detail').textContent]);
+  if(hasFwMobile) detailRows.push(['Fastweb Mobile', qs('#fwMobile_meta').textContent + '\n' + qs('#fwMobile_detail').textContent]);
+  if(hasFwWire) detailRows.push(['Wireline', qs('#fwWire_meta').textContent + '\n' + qs('#fwWire_detail').textContent]);
+  if(hasHo) detailRows.push(['HO Mobile', qs('#ho_meta').textContent + '\n' + qs('#ho_detail').textContent]);
+  if(hasFwTelco) detailRows.push(['Fastweb Telco', qs('#fwTelco_meta').textContent + '\n' + qs('#fwTelco_detail').textContent]);
+  if(hasSky) detailRows.push(['Sky', qs('#sky_meta').textContent + '\n' + qs('#sky_detail').textContent]);
+  if(hasTiscali) detailRows.push(['Tiscali', qs('#tis_meta').textContent + '\n' + qs('#tis_detail').textContent]);
+  if(hasEffRent) detailRows.push(['Efficiency / Rent', qs('#er_meta').textContent + '\n' + qs('#er_detail').textContent]);
+  if(hasMultibrandData) detailRows.push(['Multibrand', qs('#mb_meta').textContent + '\n' + qs('#mb_detail').textContent]);
+
+  if(detailRows.length){
+    sections.push({
+      title:'Dettaglio brand',
+      rows: detailRows
+    });
+  }
+
+  const sectionsHtml = sections.map(section => `
+    <section class="sec">
+      <h2>${section.title}</h2>
+      <div class="table">
+        ${section.rows.map(row => `
+          <div class="tr">
+            <div class="th">${escapeHtml(row[0])}</div>
+            <div class="td">${escapeHtml(row[1]).replace(/\n/g,'<br>')}</div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `).join('');
+
+  return `
+    <!doctype html>
+    <html lang="it">
+    <head>
+      <meta charset="utf-8">
+      <title>Report Gare E2K</title>
+      <style>
+        @page{
+          size:A4 landscape;
+          margin:7mm;
+        }
+
+        *{ box-sizing:border-box; }
+
+        html, body{
+          width:100%;
+          height:auto;
+        }
+
+        body{
+          margin:0;
+          font-family:Arial, Helvetica, sans-serif;
+          color:#0f172a;
+          background:#fff;
+          padding:0;
+          font-size:10px;
+          line-height:1.22;
+        }
+
+        .page{
+          width:100%;
+        }
+
+        .head{
+          border-bottom:2px solid #d6006b;
+          padding-bottom:6px;
+          margin-bottom:8px;
+          display:flex;
+          align-items:flex-start;
+          justify-content:space-between;
+          gap:10px;
+        }
+
+        .headLeft{
+          flex:1 1 auto;
+          min-width:0;
+        }
+
+        .title{
+          font-size:18px;
+          font-weight:900;
+          margin:0 0 2px;
+          line-height:1.05;
+        }
+
+        .sub{
+          font-size:10px;
+          color:#475569;
+          margin:0;
+        }
+
+        .chip{
+          display:inline-block;
+          margin-top:4px;
+          padding:4px 8px;
+          border-radius:999px;
+          background:#fce7f3;
+          color:#9d174d;
+          font-weight:700;
+          font-size:9px;
+          max-width:260px;
+          word-break:break-word;
+        }
+
+        .summary{
+          display:grid;
+          grid-template-columns:repeat(3, 1fr);
+          gap:6px;
+          margin:0 0 8px;
+        }
+
+        .sumCard{
+          border:1px solid #e5e7eb;
+          border-radius:10px;
+          padding:6px 8px;
+          background:#fafafa;
+        }
+
+        .sumLabel{
+          font-size:9px;
+          color:#64748b;
+          font-weight:700;
+          text-transform:uppercase;
+          margin-bottom:2px;
+        }
+
+        .sumValue{
+          font-size:13px;
+          font-weight:900;
+          line-height:1.05;
+        }
+
+        .content{
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:8px;
+          align-items:start;
+        }
+
+        .sec{
+          margin:0 0 8px;
+          break-inside:avoid;
+          page-break-inside:avoid;
+        }
+
+        h2{
+          font-size:11px;
+          margin:0 0 4px;
+          color:#0f172a;
+          line-height:1.1;
+        }
+
+        .table{
+          border:1px solid #e5e7eb;
+          border-radius:10px;
+          overflow:hidden;
+        }
+
+        .tr{
+          display:grid;
+          grid-template-columns:110px 1fr;
+          border-top:1px solid #e5e7eb;
+        }
+
+        .tr:first-child{
+          border-top:none;
+        }
+
+        .th{
+          background:#f8fafc;
+          padding:5px 6px;
+          font-weight:800;
+          color:#475569;
+          border-right:1px solid #e5e7eb;
+          font-size:9px;
+          line-height:1.15;
+        }
+
+        .td{
+          padding:5px 6px;
+          white-space:normal;
+          line-height:1.2;
+          font-size:9px;
+          word-break:break-word;
+        }
+
+        .full{
+          grid-column:1 / -1;
+        }
+
+        .compact .tr{
+          grid-template-columns:120px 1fr;
+        }
+
+        @media print{
+          body{
+            zoom:0.92;
+            -webkit-print-color-adjust:exact;
+            print-color-adjust:exact;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="page">
+        <div class="head">
+          <div class="headLeft">
+            <div class="title">Report Gare E2K</div>
+            <p class="sub">Riepilogo calcolo gare • Aprile 2026</p>
+            <div class="chip">${escapeHtml(shopName)}</div>
+          </div>
+        </div>
+
+        <div class="summary">
+          <div class="sumCard">
+            <div class="sumLabel">Totale gare singole</div>
+            <div class="sumValue">${escapeHtml(qs('#kpiSingles').textContent)}</div>
+          </div>
+          <div class="sumCard">
+            <div class="sumLabel">Bonus multibrand</div>
+            <div class="sumValue">${escapeHtml(qs('#kpiMB').textContent)}</div>
+          </div>
+          <div class="sumCard">
+            <div class="sumLabel">Totale complessivo</div>
+            <div class="sumValue">${escapeHtml(qs('#kpiGrand').textContent)}</div>
+          </div>
+        </div>
+
+        <div class="content">
+          ${sections.slice(0, 3).map(section => `
+            <section class="sec compact">
+              <h2>${section.title}</h2>
+              <div class="table">
+                ${section.rows.map(row => `
+                  <div class="tr">
+                    <div class="th">${escapeHtml(row[0])}</div>
+                    <div class="td">${escapeHtml(row[1]).replace(/\n/g,'<br>')}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </section>
+          `).join('')}
+
+          ${sections[3] ? `
+            <section class="sec full">
+              <h2>${sections[3].title}</h2>
+              <div class="table">
+                ${sections[3].rows.map(row => `
+                  <div class="tr">
+                    <div class="th">${escapeHtml(row[0])}</div>
+                    <div class="td">${escapeHtml(row[1]).replace(/\n/g,'<br>')}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </section>
+          ` : ''}
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+}
 
   function escapeHtml(str){
     return String(str ?? '')
